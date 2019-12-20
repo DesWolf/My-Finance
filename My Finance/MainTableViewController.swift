@@ -10,43 +10,48 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
 
-    let financialInstruments = ["Shares", "Bank Account", "Safe"]
+    let financialInstruments = Investment.getInvestment()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
         
         return financialInstruments.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
-        cell.textLabel?.text = financialInstruments[indexPath.row]
-        cell.imageView?.image = UIImage(named: financialInstruments[indexPath.row])
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)  as! CustomTableViewCell
+        
+        cell.name.text = financialInstruments[indexPath.row].name
+        cell.aditionalInfo.text = financialInstruments[indexPath.row].aditionalInfo
+        cell.sum.text = financialInstruments[indexPath.row].sum
+        //cell.sum.text = financialInstruments[indexPath.row].sum
+        cell.persent.text = financialInstruments[indexPath.row].persent
+         cell.imageOfInstrument.image = UIImage(named: financialInstruments[indexPath.row].imageOfInstrument)
+        
+//        cell.imageOfInstrument.layer.cornerRadius = cell.frame.size.height / 2
+//        cell.imageOfInstrument.clipsToBounds = true
+//
+        
         return cell
     }
     
-
+    // MARK: - Table view delegate
+      
+      override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+          return 70
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
