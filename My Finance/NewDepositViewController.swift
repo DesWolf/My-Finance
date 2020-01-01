@@ -72,17 +72,13 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
              getDateFromPicker()
         }
         view.endEditing(true)
+         saveButton.isEnabled = true
     }
     
     func getDateFromPicker(){
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         startDateLabel.text = formatter.string(from:datePicker.date)
-    }
-    
-
-    func textFieldDidChange(textField: UITextField) {
-        //что-то делаете, когда текстовое поле меняет значение
     }
     
     //  BankNamePicker and DurationPicker:Methods
@@ -114,6 +110,15 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     @IBAction func pushSaveButton(_ sender: Any) {
+    
+        if depositNameLabel.text?.isEmpty == true || sumLabel.text?.isEmpty == true {
+            alertWrongData()
+            print ("Error")
+        } else {
+            alertWrongData()
+            print ("Ok")
+        }
+        
     }
 
 }
@@ -122,12 +127,16 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
 // MARK: Text field delegate
 extension NewDepositViewController: UITextFieldDelegate {
 
-    
-    // Скрываем клавиатуру по нажатию на Done
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+
+    func alertWrongData() {
+        let alert = UIAlertController(title: "Error", message: "Please fill basic fields: Deposit name and Sum", preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "Ok",
+                                      style: UIAlertAction.Style.default,
+                                      handler: { _ in
+                                }))
+        
+        self.present(alert, animated: true, completion: nil)
+            }
 }
 
