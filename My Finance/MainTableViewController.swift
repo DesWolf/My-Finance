@@ -36,13 +36,11 @@ class MainTableViewController: UITableViewController {
         cell.name.text = financialInstruments[indexPath.row].name
         cell.aditionalInfo.text = financialInstruments[indexPath.row].aditionalInfo
         cell.sum.text = financialInstruments[indexPath.row].sum
-        //cell.sum.text = financialInstruments[indexPath.row].sum
         cell.persent.text = financialInstruments[indexPath.row].persent
-         cell.imageOfInstrument.image = UIImage(named: financialInstruments[indexPath.row].imageOfInstrument)
+        cell.imageOfInstrument.image = UIImage(named: financialInstruments[indexPath.row].imageOfInstrument)
         
 //        cell.imageOfInstrument.layer.cornerRadius = cell.frame.size.height / 2
 //        cell.imageOfInstrument.clipsToBounds = true
-//
         
         return cell
     }

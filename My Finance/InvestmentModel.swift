@@ -6,7 +6,7 @@
 //  Copyright © 2019 Максим Окунеев. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Investment {
     

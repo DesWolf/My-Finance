@@ -10,23 +10,27 @@ import UIKit
 
 class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    @IBOutlet var saveButton: UIBarButtonItem!
+    @IBOutlet var depositNameLabel: UITextField!
+    @IBOutlet var bankNameLabel: UITextField!
     @IBOutlet var startDateLabel: UITextField!
     @IBOutlet var durationLabel: UITextField!
     @IBOutlet var persentLabel: UITextField!
     @IBOutlet var sumLabel: UITextField!
     @IBOutlet var percentCapitalizationSwitch: UISwitch!
     
+    let bankNamePicker = UIPickerView()
     let datePicker = UIDatePicker()
     let durationPicker = UIPickerView()
     let duration = ["1 mounth", "3 mounths", "6 mounths", "1 year", "2 years", "3 years", "5 years"]
-    var currentDuration = "ааа"
+    let bankNames = ["Sberbank", "VTB", "Gasprom"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //StartDatePicker
-        startDateLabel.inputView = datePicker
-        datePicker.datePickerMode = .date
+        saveButton.isEnabled = false
+       
+    //MARK: Pickers
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -35,19 +39,31 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         toolbar.setItems([flexSpace, doneButton], animated: true)
         
+    // DepositName
+        depositNameLabel.inputAccessoryView = toolbar
+        
+    // BankNamesPicker
+        bankNameLabel.inputAccessoryView = toolbar
+        bankNameLabel.inputView = bankNamePicker
+        bankNamePicker.delegate = self
+        bankNamePicker.dataSource = self
+  
+    //StartDatePicker
+        startDateLabel.inputView = datePicker
+        datePicker.datePickerMode = .date
         startDateLabel.inputAccessoryView = toolbar
+              
         
-         // DurationPicker
+    // DurationPicker
         durationLabel.inputAccessoryView = toolbar
-        
         durationLabel.inputView = durationPicker
         durationPicker.delegate = self
         durationPicker.dataSource = self
         
-         // Percent
+    // Percent
         persentLabel.inputAccessoryView = toolbar
         
-        // Sum
+    // Sum
          sumLabel.inputAccessoryView = toolbar
     }
     
@@ -65,27 +81,31 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
 
-    // DurationPicker:Methods
+    func textFieldDidChange(textField: UITextField) {
+        //что-то делаете, когда текстовое поле меняет значение
+    }
+    
+    //  BankNamePicker and DurationPicker:Methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return duration.count
+        if bankNameLabel.isEditing { return bankNames.count }
+        else if durationLabel.isEditing { return duration.count }
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-           durationLabel.text = duration[row]
+        if bankNameLabel.isEditing { bankNameLabel.text = bankNames[row] }
+        else if durationLabel.isEditing { durationLabel.text = duration[row] }
        }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return duration[row]
+        if bankNameLabel.isEditing { return bankNames[row] }
+        else if durationLabel.isEditing { return duration[row] }
+        return ""
     }
-    
-
-    
-
-    
     
     @IBAction func curencySegmControl(_ sender: Any) {
     }
@@ -93,18 +113,21 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBAction func percentSwitch(_ sender: Any) {
     }
     
-
-
+    @IBAction func pushSaveButton(_ sender: Any) {
+    }
 
 }
 
+
 // MARK: Text field delegate
-//extension NewDepositViewController: UITextFieldDelegate {
-//    
-//    // Скрываем клавиатуру по нажатию на Done
-//    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
-//}
+extension NewDepositViewController: UITextFieldDelegate {
+
+    
+    // Скрываем клавиатуру по нажатию на Done
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
