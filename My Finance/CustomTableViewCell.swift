@@ -10,7 +10,7 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
-    @IBOutlet var imageOfInstrument: UIImageView!
+    @IBOutlet var imageOfDeposit: UIImageView!
     @IBOutlet var name: UILabel!
     @IBOutlet var aditionalInfo: UILabel!
     @IBOutlet var sum: UILabel!

@@ -10,7 +10,7 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
 
-    let financialInstruments = Investment.getInvestment()
+    var deposites = Deposit.getDeposit()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,21 +26,26 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return financialInstruments.count
+        return deposites.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)  as! CustomTableViewCell
         
-        cell.name.text = financialInstruments[indexPath.row].name
-        cell.aditionalInfo.text = financialInstruments[indexPath.row].aditionalInfo
-        cell.sum.text = financialInstruments[indexPath.row].sum
-        cell.persent.text = financialInstruments[indexPath.row].persent
-        cell.imageOfInstrument.image = UIImage(named: financialInstruments[indexPath.row].imageOfInstrument)
+        let deposit = deposites[indexPath.row]
         
-//        cell.imageOfInstrument.layer.cornerRadius = cell.frame.size.height / 2
-//        cell.imageOfInstrument.clipsToBounds = true
+        cell.name.text = deposit.depositName
+        cell.aditionalInfo.text = deposit.startDate
+        cell.sum.text = deposit.sum
+        cell.persent.text = deposit.persent
+        if deposit.bankName == "" {
+            cell.imageOfDeposit.image = #imageLiteral(resourceName: "Safe")
+        } else {
+            cell.imageOfDeposit.image = UIImage(named: deposit.bankName!)
+        }
+        
+        
         
         return cell
     }
@@ -50,41 +55,7 @@ class MainTableViewController: UITableViewController {
       override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
           return 70
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
     /*
     // MARK: - Navigation
 
@@ -95,4 +66,12 @@ class MainTableViewController: UITableViewController {
     }
     */
 
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        
+        guard let newDepositVC = segue.source as? NewDepositViewController else { return }
+        
+        newDepositVC.saveNewDeposit()
+        deposites.append(newDepositVC.newDeposit!)
+        tableView.reloadData()
+    }
 }

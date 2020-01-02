@@ -10,6 +10,8 @@ import UIKit
 
 class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    
+    
     @IBOutlet var saveButton: UIBarButtonItem!
     @IBOutlet var depositNameLabel: UITextField!
     @IBOutlet var bankNameLabel: UITextField!
@@ -19,16 +21,21 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet var sumLabel: UITextField!
     @IBOutlet var percentCapitalizationSwitch: UISwitch!
     
+    var newDeposit: Deposit?
+    
     let bankNamePicker = UIPickerView()
     let datePicker = UIDatePicker()
     let durationPicker = UIPickerView()
     let duration = ["1 mounth", "3 mounths", "6 mounths", "1 year", "2 years", "3 years", "5 years"]
     let bankNames = ["Sberbank", "VTB", "Gasprom"]
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
         saveButton.isEnabled = false
+//        percentCapitalizationSwitch.addTarget(self,
+//                                    action: #selector(percentCapitalizationSwitchChanged),
+//                                    for: .valueChanged)
        
     //MARK: Pickers
         
@@ -39,46 +46,25 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         toolbar.setItems([flexSpace, doneButton], animated: true)
         
-    // DepositName
         depositNameLabel.inputAccessoryView = toolbar
         
-    // BankNamesPicker
         bankNameLabel.inputAccessoryView = toolbar
         bankNameLabel.inputView = bankNamePicker
         bankNamePicker.delegate = self
         bankNamePicker.dataSource = self
   
-    //StartDatePicker
         startDateLabel.inputView = datePicker
         datePicker.datePickerMode = .date
         startDateLabel.inputAccessoryView = toolbar
               
-        
-    // DurationPicker
         durationLabel.inputAccessoryView = toolbar
         durationLabel.inputView = durationPicker
         durationPicker.delegate = self
         durationPicker.dataSource = self
         
-    // Percent
         persentLabel.inputAccessoryView = toolbar
-        
-    // Sum
+
          sumLabel.inputAccessoryView = toolbar
-    }
-    
-    @objc func doneAction(){
-        if startDateLabel.isEditing {
-             getDateFromPicker()
-        }
-        view.endEditing(true)
-         saveButton.isEnabled = true
-    }
-    
-    func getDateFromPicker(){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        startDateLabel.text = formatter.string(from:datePicker.date)
     }
     
     //  BankNamePicker and DurationPicker:Methods
@@ -107,7 +93,16 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     @IBAction func percentSwitch(_ sender: Any) {
+    
     }
+    
+//    @objc func percentCapitalizationSwitchChanged(switchState: UISwitch) {
+//       if percentCapitalizationSwitch.isOn {
+//            percentCapitalization = true
+//        } else {
+//            percentCapitalization = false
+//        }
+//    }
     
     @IBAction func pushSaveButton(_ sender: Any) {
     
@@ -118,25 +113,53 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
             alertWrongData()
             print ("Ok")
         }
-        
     }
-
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        dismiss(animated: true)
+    }
 }
-
 
 // MARK: Text field delegate
 extension NewDepositViewController: UITextFieldDelegate {
 
+    
+    
+    @objc func doneAction(){
+        if startDateLabel.isEditing {
+             getDateFromPicker()
+        }
+        view.endEditing(true)
+         saveButton.isEnabled = true
+    }
+    
+    func getDateFromPicker(){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        startDateLabel.text = formatter.string(from:datePicker.date)
+    }
 
     func alertWrongData() {
-        let alert = UIAlertController(title: "Error", message: "Please fill basic fields: Deposit name and Sum", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Error", message: """
+                                                                        Please fill basic fields:
+                                                                        Deposit name and Sum
+                                                                        """,
+                                preferredStyle: UIAlertController.Style.alert)
 
-        alert.addAction(UIAlertAction(title: "Ok",
-                                      style: UIAlertAction.Style.default,
-                                      handler: { _ in
-                                }))
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: { _ in }))
         
         self.present(alert, animated: true, completion: nil)
-            }
+    }
+    
+    func saveNewDeposit() {
+        newDeposit = Deposit(depositName: depositNameLabel.text!,
+                                bankName: bankNameLabel.text,
+                                startDate: startDateLabel.text,
+                                duration: durationLabel.text,
+                                persent: persentLabel.text,
+                                sum: sumLabel.text!,
+                                persentCapitalization: percentCapitalizationSwitch.isOn
+                                )
+    }
 }
 

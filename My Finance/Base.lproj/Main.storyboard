@@ -23,20 +23,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="84" translatesAutoresizingMaskIntoConstraints="NO" id="FvH-Mh-J4g">
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FvH-Mh-J4g">
                                             <rect key="frame" x="75" y="12.5" width="225" height="45.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="1xT-i5-1gY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="96" height="45.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="45.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Instrument" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="qzv-Dm-bra">
-                                                            <rect key="frame" x="0.0" y="0.0" width="96" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AditionalInfo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="0er-al-OwT">
-                                                            <rect key="frame" x="0.0" y="31" width="96" height="14.5"/>
+                                                            <rect key="frame" x="0.0" y="31" width="180" height="14.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="aditionalInfo" destination="0er-al-OwT" id="PnQ-9T-9QX"/>
-                                    <outlet property="imageOfInstrument" destination="csq-vw-6Oh" id="3Jg-o8-0ur"/>
+                                    <outlet property="imageOfDeposit" destination="csq-vw-6Oh" id="3Jg-o8-0ur"/>
                                     <outlet property="name" destination="qzv-Dm-bra" id="YEW-ej-ipI"/>
                                     <outlet property="persent" destination="Snx-Jy-X1H" id="Q2B-mc-oOf"/>
                                     <outlet property="sum" destination="kg9-KW-bFu" id="QVZ-X3-XMo"/>
@@ -292,12 +292,12 @@
                     <navigationItem key="navigationItem" id="Okn-AY-K1C">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="omN-sg-dNo">
                             <connections>
-                                <segue destination="1C3-uD-IHq" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="Sb4-BL-npe"/>
+                                <action selector="cancelButton:" destination="JRV-ff-C6K" id="8E4-TL-TdI"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="LKq-nW-shy">
                             <connections>
-                                <action selector="pushSaveButton:" destination="JRV-ff-C6K" id="2Tk-PR-sld"/>
+                                <segue destination="zTk-ph-qJA" kind="unwind" unwindAction="unwindSegue:" id="mnI-SH-o6y"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -313,6 +313,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I8J-I8-apR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="zTk-ph-qJA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="948.75" y="805.9859154929577"/>
         </scene>

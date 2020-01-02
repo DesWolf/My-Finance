@@ -8,24 +8,33 @@
 
 import UIKit
 
-struct Investment {
+struct Deposit {
     
-    var name: String
-    var aditionalInfo: String
+    var depositName: String
+    var bankName: String?
+    var startDate: String?
+    var duration: String?
+    var persent: String?
     var sum: String
-    var persent: String
-    var imageOfInstrument: String
+    var persentCapitalization: Bool?
     
-    static let financialInstruments = ["Shares", "Safe"]
     
-    static func getInvestment() -> [Investment] {
+    static let deposits = ["Shares", "Safe", "VTB"]
+    
+    static func getDeposit() -> [Deposit] {
         
-        var instruments = [Investment]()
+        var instruments = [Deposit]()
         
-        for instrument in financialInstruments {
-            instruments.append(Investment(name: instrument, aditionalInfo: "aditionalInfoTest", sum: "SumTest", persent: "x% Yearly", imageOfInstrument: instrument))
-        }
-        
+        for deposit in deposits {
+            instruments.append(Deposit(depositName: deposit,
+                                       bankName: deposit,
+                                       startDate: "1.1.1",
+                                       duration: "1 mounth",
+                                       persent: "5",
+                                       sum: "100",
+                                       persentCapitalization: true
+                                    ))}
         return instruments
     }
 }
+
