@@ -36,9 +36,9 @@ class MainTableViewController: UITableViewController {
         let deposit = deposites[indexPath.row]
         
         cell.name.text = deposit.depositName
-        cell.aditionalInfo.text = deposit.startDate
-        cell.sum.text = deposit.sum
-        cell.persent.text = deposit.persent
+        cell.aditionalInfo.text = "End date: \(deposit.startDate)"
+        cell.sum.text = "\(deposit.sum)"
+        cell.persent.text = "\(deposit.persent)% (\(deposit.finalSum))"
         if deposit.bankName == "" {
             cell.imageOfDeposit.image = #imageLiteral(resourceName: "Safe")
         } else {
@@ -74,4 +74,6 @@ class MainTableViewController: UITableViewController {
         deposites.append(newDepositVC.newDeposit!)
         tableView.reloadData()
     }
+    
+
 }

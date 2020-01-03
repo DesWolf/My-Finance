@@ -12,11 +12,12 @@ struct Deposit {
     
     var depositName: String
     var bankName: String?
-    var startDate: String?
-    var duration: String?
-    var persent: String?
-    var sum: String
-    var persentCapitalization: Bool?
+    var startDate: String
+    var duration: String
+    var persent: Double
+    var sum: Double
+    var finalSum: Double
+    var persentCapitalization: String
     
     
     static let deposits = ["Shares", "Safe", "VTB"]
@@ -24,17 +25,21 @@ struct Deposit {
     static func getDeposit() -> [Deposit] {
         
         var instruments = [Deposit]()
-        
+    
         for deposit in deposits {
             instruments.append(Deposit(depositName: deposit,
                                        bankName: deposit,
-                                       startDate: "1.1.1",
+                                       startDate: "vvv",
                                        duration: "1 mounth",
-                                       persent: "5",
-                                       sum: "100",
-                                       persentCapitalization: true
+                                       persent: 5.0,
+                                       sum: 100.00,
+                                       finalSum: 100.00,
+                                       persentCapitalization: ""
                                     ))}
         return instruments
     }
 }
+
+
+
 

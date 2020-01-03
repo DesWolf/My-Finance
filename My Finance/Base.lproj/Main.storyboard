@@ -134,7 +134,7 @@
                                     <segment title="€"/>
                                 </segments>
                                 <connections>
-                                    <action selector="curencySegmControl:" destination="JRV-ff-C6K" eventType="valueChanged" id="mBq-tc-qut"/>
+                                    <action selector="curencySegment:" destination="JRV-ff-C6K" eventType="valueChanged" id="mBq-tc-qut"/>
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tsY-8j-dpi">
@@ -174,7 +174,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kEC-aY-oyW">
                                 <rect key="frame" x="20" y="293" width="280" height="34"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxi-jL-SY1">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxi-jL-SY1">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="15"/>
                                         <nil key="textColor"/>
@@ -191,7 +191,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CFH-XI-W0q">
                                 <rect key="frame" x="20" y="347" width="280" height="34"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awd-bv-Ggu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awd-bv-Ggu">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="15"/>
                                         <nil key="textColor"/>
@@ -208,7 +208,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gTf-aj-q1H">
                                 <rect key="frame" x="20" y="401" width="280" height="34"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Percent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HA-py-Ldw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Percent*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HA-py-Ldw">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                         <nil key="textColor"/>
@@ -218,7 +218,7 @@
                                         <rect key="frame" x="140" y="0.0" width="140" height="34"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -239,21 +239,26 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="68" translatesAutoresizingMaskIntoConstraints="NO" id="OQp-gq-FM8">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="W6p-sa-6g6">
                                 <rect key="frame" x="20" y="519" width="280" height="31"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Percent capitalization" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVr-aN-COz">
-                                        <rect key="frame" x="0.0" y="0.0" width="163" height="31"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% capitalization" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVr-aN-COz">
+                                        <rect key="frame" x="0.0" y="0.0" width="114" height="31"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iLn-fY-iVI">
-                                        <rect key="frame" x="231" y="0.0" width="51" height="31"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xsq-Hy-x3v">
+                                        <rect key="frame" x="139" y="0.0" width="141" height="32"/>
+                                        <segments>
+                                            <segment title="-"/>
+                                            <segment title="M"/>
+                                            <segment title="Y"/>
+                                        </segments>
                                         <connections>
-                                            <action selector="percentSwitch:" destination="JRV-ff-C6K" eventType="valueChanged" id="6M3-WS-iKR"/>
+                                            <action selector="capitalizationSegment:" destination="JRV-ff-C6K" eventType="valueChanged" id="9gZ-kM-4fo"/>
                                         </connections>
-                                    </switch>
+                                    </segmentedControl>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -267,7 +272,9 @@
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="tsY-8j-dpi" secondAttribute="trailing" constant="20" id="HXl-ro-1NI"/>
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="CFH-XI-W0q" secondAttribute="trailing" constant="20" id="Ifc-Du-1jo"/>
                             <constraint firstItem="aLc-Yp-lmr" firstAttribute="top" secondItem="ZPw-QL-l8c" secondAttribute="top" constant="20" id="MfU-rJ-yrB"/>
+                            <constraint firstItem="W6p-sa-6g6" firstAttribute="top" secondItem="dPp-cL-Jzt" secondAttribute="bottom" constant="30" id="PgD-uz-WGB"/>
                             <constraint firstItem="kEC-aY-oyW" firstAttribute="top" secondItem="WeI-88-9GK" secondAttribute="bottom" constant="20" id="QAg-v3-sA9"/>
+                            <constraint firstItem="W6p-sa-6g6" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="SUP-ng-Am1"/>
                             <constraint firstItem="aLc-Yp-lmr" firstAttribute="centerX" secondItem="TyD-uh-pDT" secondAttribute="centerX" id="TCT-vd-904"/>
                             <constraint firstItem="dPp-cL-Jzt" firstAttribute="top" secondItem="gTf-aj-q1H" secondAttribute="bottom" constant="20" id="VU8-se-T1J"/>
                             <constraint firstItem="dPp-cL-Jzt" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="Yin-je-EiA"/>
@@ -280,12 +287,10 @@
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="WeI-88-9GK" secondAttribute="trailing" constant="20" id="gDk-n1-3hP"/>
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="gTf-aj-q1H" secondAttribute="trailing" constant="20" id="hGH-3H-5U4"/>
                             <constraint firstItem="gTf-aj-q1H" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="jXL-e6-Qhm"/>
-                            <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="OQp-gq-FM8" secondAttribute="trailing" constant="20" id="jvd-Zf-aDm"/>
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="kEC-aY-oyW" secondAttribute="trailing" constant="20" id="uwC-lV-gta"/>
-                            <constraint firstItem="OQp-gq-FM8" firstAttribute="top" secondItem="dPp-cL-Jzt" secondAttribute="bottom" constant="30" id="vNW-gy-QD0"/>
                             <constraint firstItem="3t3-uX-DCo" firstAttribute="top" secondItem="aLc-Yp-lmr" secondAttribute="bottom" constant="30" id="wbf-vE-hsG"/>
                             <constraint firstItem="CFH-XI-W0q" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="wxr-M7-xmf"/>
-                            <constraint firstItem="OQp-gq-FM8" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="zgG-qU-6CG"/>
+                            <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="W6p-sa-6g6" secondAttribute="trailing" constant="20" id="yFc-gr-vLk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZPw-QL-l8c"/>
                     </view>
@@ -305,8 +310,8 @@
                         <outlet property="bankNameLabel" destination="3H7-Ee-RnB" id="Pg2-4b-Gaf"/>
                         <outlet property="depositNameLabel" destination="xBH-iD-7xE" id="0dl-Sh-KVl"/>
                         <outlet property="durationLabel" destination="GY9-jq-uhG" id="8cD-dp-V4Y"/>
-                        <outlet property="percentCapitalizationSwitch" destination="iLn-fY-iVI" id="Keb-GH-7VS"/>
-                        <outlet property="persentLabel" destination="7FO-Jp-CMf" id="qKG-f4-hF2"/>
+                        <outlet property="percentLabel" destination="7FO-Jp-CMf" id="qKG-f4-hF2"/>
+                        <outlet property="persentCapitalization" destination="Xsq-Hy-x3v" id="rav-PI-sdl"/>
                         <outlet property="saveButton" destination="LKq-nW-shy" id="F0n-uw-QsZ"/>
                         <outlet property="startDateLabel" destination="gVH-9V-Lre" id="vnM-cW-vc5"/>
                         <outlet property="sumLabel" destination="grx-sj-b04" id="Rzp-Uz-nDu"/>
