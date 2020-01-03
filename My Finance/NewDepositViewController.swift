@@ -19,7 +19,7 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet var sumLabel: UITextField!
     @IBOutlet var persentCapitalization: UISegmentedControl!
     
-    var newDeposit: Deposit?
+    var newDeposit = Deposit()
     
     let bankNamePicker = UIPickerView()
     let datePicker = UIDatePicker()
@@ -32,16 +32,14 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         saveButton.isEnabled = false
         
         let textFields = [depositNameLabel, startDateLabel, durationLabel, percentLabel, sumLabel]
         for textField in textFields {
          
             textField!.addTarget(self, action: #selector(NewDepositViewController.textFieldDidChange(textField:)), for: UIControl.Event.editingDidEnd)
-            
         }
-
         
     //MARK: Pickers
         
@@ -166,20 +164,20 @@ extension NewDepositViewController: UITextFieldDelegate {
     }
     
     //MARK: Save New Deposit
-    func saveNewDeposit() {
-        newDeposit = Deposit(depositName: depositNameLabel.text!,
-                             bankName: bankNameLabel.text,
-                             startDate: endDate(startDate: startDateLabel.text!),
-                             duration: durationLabel.text!,
-                             persent: Double(percentLabel.text!)!,
-                             sum: Double(sumLabel.text!)!,
-                             finalSum: finalSumCalculation(duration: durationCalculation(duration: durationLabel.text!),
-                                                           percent: Double(percentLabel.text!)!,
-                                                           sum: Double(sumLabel.text!)!,
-                                                           capitalization: capitalization),
-                             persentCapitalization: capitalization
-                            )
-    }
+//    func saveNewDeposit() {
+//        newDeposit = Deposit(depositName: depositNameLabel.text!,
+//                             bankName: bankNameLabel.text,
+//                             startDate: endDate(startDate: startDateLabel.text!),
+//                             duration: durationLabel.text!,
+//                             persent: Double(percentLabel.text!)!,
+//                             sum: Double(sumLabel.text!)!,
+//                             finalSum: finalSumCalculation(duration: durationCalculation(duration: durationLabel.text!),
+//                                                           percent: Double(percentLabel.text!)!,
+//                                                           sum: Double(sumLabel.text!)!,
+//                                                           capitalization: capitalization),
+//                             persentCapitalization: capitalization
+//                            )
+//    }
     
     func endDate (startDate: String) -> String {
         let date = startDate

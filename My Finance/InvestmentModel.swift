@@ -6,39 +6,47 @@
 //  Copyright © 2019 Максим Окунеев. All rights reserved.
 //
 
-import UIKit
+import RealmSwift
 
-struct Deposit {
+class Deposit: Object {
     
-    var depositName: String
-    var bankName: String?
-    var startDate: String
-    var duration: String
-    var persent: Double
-    var sum: Double
-    var finalSum: Double
-    var persentCapitalization: String
+    @objc dynamic var depositName = ""
+    @objc dynamic var bankName: Data?
+    @objc dynamic var startDate = ""
+    @objc dynamic var duration = ""
+    @objc dynamic var percent = 0.0
+    @objc dynamic var sum = 0.0
+    @objc dynamic var finalSum = 0.0
+    @objc dynamic var persentCapitalization = ""
     
     
-    static let deposits = ["Shares", "Safe", "VTB"]
+     let deposits = ["Shares", "Safe", "VTB"]
     
-    static func getDeposit() -> [Deposit] {
-        
-        var instruments = [Deposit]()
+   func saveDeposit(){
     
         for deposit in deposits {
-            instruments.append(Deposit(depositName: deposit,
-                                       bankName: deposit,
-                                       startDate: "vvv",
-                                       duration: "1 mounth",
-                                       persent: 5.0,
-                                       sum: 100.00,
-                                       finalSum: 100.00,
-                                       persentCapitalization: ""
-                                    ))}
-        return instruments
+            
+            let image = UIImage(named: deposit)
+            guard let imageData = image?.pngData() else { return }
+            
+            let newDeposit = Deposit()
+            
+            newDeposit.depositName = deposit
+            newDeposit.bankName = imageData
+            newDeposit.startDate = "01.01.2000"
+            newDeposit.duration = "30 days"
+            newDeposit.percent = 5.0
+            newDeposit.sum = 1000.0
+            newDeposit.finalSum = 1100.0
+            newDeposit.persentCapitalization = ""
+            
+            StorageManager.saveObject(newDeposit)
+        
+            
     }
 }
+}
+
 
 
 

@@ -10,7 +10,7 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
 
-    var deposites = Deposit.getDeposit()
+  //  var deposites = Deposit.getDeposit()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,31 +24,31 @@ class MainTableViewController: UITableViewController {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//
+//        return deposites.count
+//    }
+//
+//
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)  as! CustomTableViewCell
+//
+//        let deposit = deposites[indexPath.row]
+//
+//        cell.name.text = deposit.depositName
+//        cell.aditionalInfo.text = "End date: \(deposit.startDate)"
+//        cell.sum.text = "\(deposit.sum)"
+//        cell.persent.text = "\(deposit.persent)% (\(deposit.finalSum))"
+//        if deposit.bankName == "" {
+//            cell.imageOfDeposit.image = #imageLiteral(resourceName: "Safe")
+//        } else {
+//            cell.imageOfDeposit.image = UIImage(named: deposit.bankName!)
+//        }
+//
         
-        return deposites.count
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)  as! CustomTableViewCell
         
-        let deposit = deposites[indexPath.row]
-        
-        cell.name.text = deposit.depositName
-        cell.aditionalInfo.text = "End date: \(deposit.startDate)"
-        cell.sum.text = "\(deposit.sum)"
-        cell.persent.text = "\(deposit.persent)% (\(deposit.finalSum))"
-        if deposit.bankName == "" {
-            cell.imageOfDeposit.image = #imageLiteral(resourceName: "Safe")
-        } else {
-            cell.imageOfDeposit.image = UIImage(named: deposit.bankName!)
-        }
-        
-        
-        
-        return cell
-    }
+//        return cell
+//}
     
     // MARK: - Table view delegate
       
@@ -70,8 +70,8 @@ class MainTableViewController: UITableViewController {
         
         guard let newDepositVC = segue.source as? NewDepositViewController else { return }
         
-        newDepositVC.saveNewDeposit()
-        deposites.append(newDepositVC.newDeposit!)
+//        newDepositVC.saveNewDeposit()
+//        deposites.append(newDepositVC.newDeposit!)
         tableView.reloadData()
     }
     
