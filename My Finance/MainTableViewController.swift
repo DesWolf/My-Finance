@@ -15,7 +15,7 @@ class MainTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         deposites = realm.objects(Deposit.self)
     }
 
@@ -75,7 +75,7 @@ class MainTableViewController: UITableViewController {
         guard let newDepositVC = segue.source as? NewDepositViewController else { return }
         
         newDepositVC.saveNewDeposit()
-        
+        //deposites.append(newDepositVC.newDeposit!)
         tableView.reloadData()
     }
     

@@ -8,10 +8,6 @@
 
 import Foundation
 
-class BankNames {
-    
-    let bankNames = ["Sberbank", "VTB", "Gasprom"]
-}
 
 class Durations {
     
