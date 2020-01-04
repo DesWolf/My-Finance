@@ -19,33 +19,17 @@ class Deposit: Object {
     @objc dynamic var finalSum = 0.0
     @objc dynamic var persentCapitalization = ""
     
-    
-//     let deposits = ["Shares", "Safe", "VTB"]
-//    
-//   func saveDeposit(){
-//    
-//        for deposit in deposits {
-//            
-//            let image = UIImage(named: deposit)
-//            guard let imageData = image?.pngData() else { return }
-//            
-//            let newDeposit = Deposit()
-//            
-//            newDeposit.depositName = deposit
-//            newDeposit.bankName = imageData
-//            newDeposit.bankNameImage = ""
-//            newDeposit.startDate = "01.01.2000"
-//            newDeposit.duration = "30 days"
-//            newDeposit.percent = 5.0
-//            newDeposit.sum = 1000.0
-//            newDeposit.finalSum = 1100.0
-//            newDeposit.persentCapitalization = ""
-//            
-//            StorageManager.saveObject(newDeposit)
-//        
-//            
-//    }
-//}
+    convenience init(depositName: String, bankName: Data?, startDate: String, duration: String, percent: Double, sum: Double, finalSum: Double, percentCapitalization: String) {
+        self.init()
+        self.depositName = depositName
+        self.bankName = bankName
+        self.startDate = startDate
+        self.duration = duration
+        self.percent = percent
+        self.sum = sum
+        self.finalSum = finalSum
+        self.persentCapitalization = persentCapitalization
+    }
 }
 
 

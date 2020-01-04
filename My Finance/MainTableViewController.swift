@@ -31,25 +31,24 @@ class MainTableViewController: UITableViewController {
         return deposites.isEmpty ? 0 : deposites.count
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)  as! CustomTableViewCell
 
         let deposit = deposites[indexPath.row]
 
+        let image = #imageLiteral(resourceName: "Gasprom")
+        let imageData = image.pngData()
+        
         cell.name.text = deposit.depositName
         cell.aditionalInfo.text = "End date: \(deposit.startDate)"
         cell.sum.text = "\(deposit.sum)"
         cell.persent.text = "\(deposit.percent)% (\(deposit.finalSum))"
-        cell.imageOfDeposit.image = UIImage(data: deposit.bankName!)
-        
-//        if deposit.bankName == "" {
-//            cell.imageOfDeposit.image = #imageLiteral(resourceName: "Safe")
-//        } else {
-//            cell.imageOfDeposit.image = UIImage(named: deposit.bankName!)
-//        }
 
-        
+        if deposit.bankName == nil {
+            cell.imageOfDeposit.image = #imageLiteral(resourceName: "Safe")
+        } else {
+            cell.imageOfDeposit.image = UIImage(data: deposit.bankName!)
+        }
         
         return cell
 }

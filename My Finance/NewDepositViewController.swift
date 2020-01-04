@@ -19,8 +19,6 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet var sumLabel: UITextField!
     @IBOutlet var persentCapitalization: UISegmentedControl!
     
-   // var newDeposit = Deposit()
-    
     let bankNamePicker = UIPickerView()
     let datePicker = UIDatePicker()
     let durationPicker = UIPickerView()
@@ -33,21 +31,14 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        DispatchQueue.main.async {
-//            self.newDeposit.saveDeposit()
-//        }
-        
-
         saveButton.isEnabled = false
         
         let textFields = [depositNameLabel, startDateLabel, durationLabel, percentLabel, sumLabel]
         for textField in textFields {
          
             textField!.addTarget(self, action: #selector(NewDepositViewController.textFieldDidChange(textField:)), for: UIControl.Event.editingDidEnd)
-            
         }
 
-        
     //MARK: Pickers
         
         let toolbar = UIToolbar()
@@ -77,7 +68,6 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
         sumLabel.inputAccessoryView = toolbar
     }
-    
     
     //  BankNamePicker and DurationPicker:Methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -115,8 +105,8 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
             case 1:
                 capitalization = "M"
             case 2:
-                if  (durationCalculation(duration: durationLabel.text! )) < 365 {
-                     alertWrongData()
+                if  durationCalculation(duration: durationLabel.text!) < 365 {
+                    alertWrongData()
                     persentCapitalization.selectedSegmentIndex = 0
                 }
                 capitalization = "Y"
@@ -126,9 +116,7 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
     
     @IBAction func pushSaveButton(_ sender: Any) {
-
     }
-
     
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true)
@@ -147,7 +135,6 @@ extension NewDepositViewController: UITextFieldDelegate {
         print (changed)
       }
     
-    
     @objc func doneAction(){
         if startDateLabel.isEditing {
              getDateFromPicker()
@@ -163,40 +150,39 @@ extension NewDepositViewController: UITextFieldDelegate {
 
     //MARK: Alert Wrong Duration
     func alertWrongData() {
-        let alert = UIAlertController(title: "Error", message: "Can't calculate. Please change Duration.", preferredStyle: UIAlertController.Style.alert)
-
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: { _ in }))
+        let alert = UIAlertController(title: "Error", message: "Can't calculate. Please change Duration.",
+                                      preferredStyle: UIAlertController.Style.alert)
         
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: { _ in }))
         self.present(alert, animated: true, completion: nil)
     }
     
     //MARK: Save New Deposit
     func saveNewDeposit() {
         
-        let newDeposit = Deposit()
-        
         var image: UIImage?
         
-        if newDeposit.bankName == nil {
+        if bankNameLabel.text?.isEmpty ?? true {
             image = #imageLiteral(resourceName: "Safe")
         } else {
-            image = #imageLiteral(resourceName: "Shares")
+            image = UIImage(imageLiteralResourceName: bankNameLabel.text!)
         }
         
         let imageData = image?.pngData()
+        let newDeposit = Deposit( depositName: depositNameLabel.text!,
+                                  bankName: imageData,
+                                  startDate: endDate(startDate: startDateLabel.text!),
+                                  duration: durationLabel.text!,
+                                  percent: Double(percentLabel.text!)!,
+                                  sum: Double(sumLabel.text!)!,
+                                  finalSum: finalSumCalculation(duration: durationCalculation(duration: durationLabel.text!),
+                                                                   percent: Double(percentLabel.text!)!,
+                                                                   sum: Double(sumLabel.text!)!,
+                                                                   capitalization: capitalization),
+                                  percentCapitalization: capitalization
+        )
         
-        newDeposit.depositName = depositNameLabel.text!
-        newDeposit.bankName = imageData
-        newDeposit.startDate = endDate(startDate: startDateLabel.text!)
-        newDeposit.duration = durationLabel.text!
-        newDeposit.percent = Double(percentLabel.text!)!
-        newDeposit.sum = Double(sumLabel.text!)!
-        newDeposit.finalSum = finalSumCalculation(duration: durationCalculation(duration: durationLabel.text!),
-                                                           percent: Double(percentLabel.text!)!,
-                                                           sum: Double(sumLabel.text!)!,
-                                                           capitalization: capitalization)
-        newDeposit.persentCapitalization = capitalization
-                            
+        StorageManager.saveObject(newDeposit)
     }
     
     func endDate (startDate: String) -> String {
@@ -210,30 +196,10 @@ extension NewDepositViewController: UITextFieldDelegate {
     
     func durationCalculation(duration: String) -> Double {
         
-        var x = 0.0
-        switch duration {
-        case "30 days":
-            x = 30
-        case "90 days":
-            x = 90
-        case "180 days":
-            x = 180
-        case "365 days":
-            x = 365
-        case "730 days":
-            x = 730
-        case "1095 days":
-            x = 1095
-        case "1825 days":
-            x = 1825
-        default:
-            break
-        }
-        
-        return x
+        return Double(duration.components(separatedBy: " ").first!) ?? 0.0
     }
-    // MARK: Final Sum Calculation
     
+    // MARK: Final Sum Calculation
     func finalSumCalculation(duration: Double, percent: Double, sum: Double, capitalization: String ) -> Double {
         
         var finalSum = sum
@@ -241,17 +207,13 @@ extension NewDepositViewController: UITextFieldDelegate {
         let duration = Double(Int(Double(durationCalculation(duration: durationLabel.text!)) / 30.41))
         print (duration )
         switch capitalization {
-        
         case "":
-          
             if duration  < 1.0 {
                 finalSum = finalSum + (finalSum * (percent / 12 / 100))
             } else if duration > 1.0 {
                 let percentSum = (finalSum * (percent / 100)  *  duration / 12)
                 finalSum = finalSum + percentSum
             }
-            print ("case -")
-        
         case "M":
            if duration < 1.0 {
                 finalSum = finalSum + (finalSum * percent  *  30.41 / 365) / 100
@@ -263,21 +225,15 @@ extension NewDepositViewController: UITextFieldDelegate {
                     i += 1
                 }
             }
-            print ("case M")
-            
         case "Y":
             while  i < duration / 12.0 {
                 let percentSum = (finalSum * percent ) / 100
                 finalSum = finalSum + percentSum
                 i += 1
             }
-            print ("case Y")
-            
         default:
             break
         }
-        print(Double(finalSum))
         return Double(finalSum)
-}
-
+    }
 }
