@@ -144,26 +144,17 @@ extension NewDepositViewController: UITextFieldDelegate {
     func alertWrongData() {
         let alert = UIAlertController(title: "Error", message: "Can't calculate. Please change Duration.",
                                       preferredStyle: UIAlertController.Style.alert)
-        
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: { _ in }))
         self.present(alert, animated: true, completion: nil)
     }
     
     //MARK: Save New Deposit
-    func saveNewDeposit() {
+    func saveDeposit() {
         
-        var image: UIImage?
-        
-        if bankNameLabel.text?.isEmpty ?? true {
-            image = #imageLiteral(resourceName: "Safe")
-        } else {
-            image = UIImage(imageLiteralResourceName: bankNameLabel.text!)
-        }
-        
-        let imageData = image?.pngData()
         let newDeposit = Deposit( depositName: depositNameLabel.text!,
-                                  bankName: imageData,
-                                  startDate: endDate(startDate: startDateLabel.text!),
+                                  bankName: bankNameLabel.text ?? "",
+                                  startDate: startDateLabel.text!,
+                                  endDate: endDate(startDate: startDateLabel.text!),
                                   duration: durationLabel.text!,
                                   percent: Double(percentLabel.text!) ?? 0.0,
                                   sum: Double(sumLabel.text!) ?? 0.0,
@@ -172,28 +163,39 @@ extension NewDepositViewController: UITextFieldDelegate {
                                                                    sum: Double(sumLabel.text!)!,
                                                                    capitalization: capitalization),
                                   capitalisationSegment: capitalization,
-                                  currencyLabel: currency
+                                  currencySegment: currency
                                 )
-        print("Capitalization \(capitalization)")
-         print("Currency \(currency)")
-        StorageManager.saveObject(newDeposit)
+        if currentDeposit != nil {
+            try! realm.write {
+                currentDeposit?.depositName = newDeposit.depositName
+                currentDeposit?.bankName = newDeposit.bankName
+                currentDeposit?.startDate = newDeposit.startDate
+                currentDeposit?.endDate = newDeposit.endDate
+                currentDeposit?.duration = newDeposit.duration
+                currentDeposit?.percent = newDeposit.percent
+                currentDeposit?.sum = newDeposit.sum
+                currentDeposit?.finalSum = newDeposit.finalSum
+                currentDeposit?.capitalisationSegment = newDeposit.capitalisationSegment
+                currentDeposit?.currencySegment = newDeposit.currencySegment
+            }
+        } else {
+                StorageManager.saveObject(newDeposit)
+        }
     }
+
     
     private func setupEditScreen() {
            
         if currentDeposit != nil {
             
-               setupNavigationBar()
-               
-               guard let data = currentDeposit?.bankName, let image = UIImage(data: data) else { return }
+            setupNavigationBar()
                
             depositNameLabel.text = currentDeposit?.depositName
-            bankNameLabel.text = "" // как преобразовать дату в текст
+            bankNameLabel.text = currentDeposit?.bankName
             startDateLabel.text = currentDeposit?.startDate
             durationLabel.text = currentDeposit?.duration
             percentLabel.text =  "\(currentDeposit?.percent ?? 0)"
             sumLabel.text = "\(currentDeposit?.sum ?? 0)"
-            
             capitalisationSegment.selectedSegmentIndex = currentDeposit?.capitalisationSegment ?? 0
             currencySegment.selectedSegmentIndex = currentDeposit?.currencySegment ?? 0
             
@@ -202,6 +204,9 @@ extension NewDepositViewController: UITextFieldDelegate {
     
     private func setupNavigationBar() {
         
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
         navigationItem.leftBarButtonItem = nil
         title = currentDeposit?.depositName
         saveButton.isEnabled = true
@@ -256,7 +261,7 @@ extension NewDepositViewController: UITextFieldDelegate {
         default:
             break
         }
-        return Double(finalSum)
+        return Double((String(format: "%.2f", finalSum)))  ?? 0
     }
 
 }

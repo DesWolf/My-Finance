@@ -235,9 +235,9 @@
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vz5-ER-PNV">
                                                 <rect key="frame" x="0.0" y="27.5" width="130" height="32"/>
                                                 <segments>
-                                                    <segment title="P"/>
+                                                    <segment title="₽"/>
                                                     <segment title="$"/>
-                                                    <segment title="E"/>
+                                                    <segment title="€"/>
                                                 </segments>
                                                 <connections>
                                                     <action selector="curencySegment:" destination="JRV-ff-C6K" eventType="valueChanged" id="6G1-tv-xvY"/>

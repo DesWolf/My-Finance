@@ -40,14 +40,14 @@ class MainTableViewController: UITableViewController {
 //        let imageData = image.pngData()
         
         cell.name.text = deposit.depositName
-        cell.aditionalInfo.text = "End date: \(deposit.startDate)"
+        cell.aditionalInfo.text = "\(deposit.startDate) - \(deposit.endDate)"
         cell.sum.text = "\(deposit.sum)"
         cell.persent.text = "\(deposit.percent)% (\(deposit.finalSum))"
 
-        if deposit.bankName == nil {
+        if deposit.bankName == "" {
             cell.imageOfDeposit.image = #imageLiteral(resourceName: "Safe")
         } else {
-            cell.imageOfDeposit.image = UIImage(data: deposit.bankName!)
+            cell.imageOfDeposit.image = UIImage(named: deposit.bankName)
         }
         
         return cell
@@ -91,7 +91,7 @@ class MainTableViewController: UITableViewController {
         
         guard let newDepositVC = segue.source as? NewDepositViewController else { return }
         
-        newDepositVC.saveNewDeposit()
+        newDepositVC.saveDeposit()
         //deposites.append(newDepositVC.newDeposit!)
         tableView.reloadData()
     }
