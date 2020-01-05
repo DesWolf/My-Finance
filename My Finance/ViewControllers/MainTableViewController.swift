@@ -36,12 +36,24 @@ class MainTableViewController: UITableViewController {
 
         let deposit = deposites[indexPath.row]
 
-//        let image = #imageLiteral(resourceName: "Gasprom")
-//        let imageData = image.pngData()
+        var currency = ""
+        func currencySegment(currencySegment: Int) -> String {
+            switch currencySegment {
+            case 0:
+                currency = "₽"
+            case 1:
+                currency = "$"
+            case 2:
+                currency = "€"
+            default:
+                break
+            }
+            return (currency)
+        }
         
         cell.name.text = deposit.depositName
         cell.aditionalInfo.text = "\(deposit.startDate) - \(deposit.endDate)"
-        cell.sum.text = "\(deposit.sum)"
+        cell.sum.text = "\(deposit.sum) \(currencySegment(currencySegment: deposit.currencySegment))"
         cell.persent.text = "\(deposit.percent)% (\(deposit.finalSum))"
 
         if deposit.bankName == "" {
@@ -49,6 +61,8 @@ class MainTableViewController: UITableViewController {
         } else {
             cell.imageOfDeposit.image = UIImage(named: deposit.bankName)
         }
+        
+        
         
         return cell
 }
@@ -66,12 +80,6 @@ class MainTableViewController: UITableViewController {
         
         return [deleteAction]
     }
-    
-    
-    
-//      override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//          return 70
-//    }
     
 
     // MARK: - Navigation
