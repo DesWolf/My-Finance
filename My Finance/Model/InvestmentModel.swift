@@ -17,9 +17,10 @@ class Deposit: Object {
     @objc dynamic var percent = 0.0
     @objc dynamic var sum = 0.0
     @objc dynamic var finalSum = 0.0
-    @objc dynamic var persentCapitalization = ""
+    @objc dynamic var capitalisationSegment = 0
+    @objc dynamic var currencySegment = 0
     
-    convenience init(depositName: String, bankName: Data?, startDate: String, duration: String, percent: Double, sum: Double, finalSum: Double, percentCapitalization: String) {
+    convenience init(depositName: String, bankName: Data?, startDate: String, duration: String, percent: Double, sum: Double, finalSum: Double, capitalisationSegment: Int, currencyLabel: Int) {
         self.init()
         self.depositName = depositName
         self.bankName = bankName
@@ -28,7 +29,8 @@ class Deposit: Object {
         self.percent = percent
         self.sum = sum
         self.finalSum = finalSum
-        self.persentCapitalization = persentCapitalization
+        self.capitalisationSegment = capitalisationSegment
+        self.currencySegment = currencyLabel
     }
 }
 

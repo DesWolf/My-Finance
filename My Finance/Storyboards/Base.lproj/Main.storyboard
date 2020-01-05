@@ -89,6 +89,7 @@
                                     <outlet property="name" destination="qzv-Dm-bra" id="YEW-ej-ipI"/>
                                     <outlet property="persent" destination="Snx-Jy-X1H" id="Q2B-mc-oOf"/>
                                     <outlet property="sum" destination="kg9-KW-bFu" id="QVZ-X3-XMo"/>
+                                    <segue destination="JRV-ff-C6K" kind="show" identifier="showDetail" id="af0-h7-2ZV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -97,7 +98,7 @@
                             <outlet property="delegate" destination="BPJ-Ih-6T8" id="nMI-Hd-Wz1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Investment" id="PAE-6e-tZT">
+                    <navigationItem key="navigationItem" title="My Investment" largeTitleDisplayMode="never" id="PAE-6e-tZT">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6Xy-0q-Wb6">
                             <connections>
                                 <segue destination="sej-wm-I2U" kind="presentation" modalPresentationStyle="fullScreen" id="0Wx-01-Fw0"/>
@@ -109,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="104.8" y="807.34632683658174"/>
         </scene>
-        <!--New Deposit View Controller-->
+        <!--New bank deposit-->
         <scene sceneID="48O-hh-lvc">
             <objects>
                 <viewController id="JRV-ff-C6K" customClass="NewDepositViewController" customModule="My_Finance" customModuleProvider="target" sceneMemberID="viewController">
@@ -117,28 +118,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add bank deposit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLc-Yp-lmr">
-                                <rect key="frame" x="35" y="64" width="250" height="30"/>
-                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3t3-uX-DCo">
-                                <rect key="frame" x="85.5" y="124" width="149" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="149" id="3FI-Qd-0YY"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="₽"/>
-                                    <segment title="$"/>
-                                    <segment title="€"/>
-                                </segments>
-                                <connections>
-                                    <action selector="curencySegment:" destination="JRV-ff-C6K" eventType="valueChanged" id="mBq-tc-qut"/>
-                                </connections>
-                            </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tsY-8j-dpi">
-                                <rect key="frame" x="20" y="185" width="280" height="34"/>
+                                <rect key="frame" x="20" y="121" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deposit name*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6f-3G-d9N">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
@@ -155,7 +136,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WeI-88-9GK">
-                                <rect key="frame" x="20" y="239" width="280" height="34"/>
+                                <rect key="frame" x="20" y="175" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHj-NC-SU9">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
@@ -172,7 +153,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kEC-aY-oyW">
-                                <rect key="frame" x="20" y="293" width="280" height="34"/>
+                                <rect key="frame" x="20" y="229" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxi-jL-SY1">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
@@ -189,7 +170,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CFH-XI-W0q">
-                                <rect key="frame" x="20" y="347" width="280" height="34"/>
+                                <rect key="frame" x="20" y="283" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awd-bv-Ggu">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
@@ -206,7 +187,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gTf-aj-q1H">
-                                <rect key="frame" x="20" y="401" width="280" height="34"/>
+                                <rect key="frame" x="20" y="337" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Percent*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HA-py-Ldw">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
@@ -223,7 +204,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dPp-cL-Jzt">
-                                <rect key="frame" x="20" y="455" width="280" height="34"/>
+                                <rect key="frame" x="20" y="391" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sum*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJT-lg-CoR">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
@@ -239,62 +220,85 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="W6p-sa-6g6">
-                                <rect key="frame" x="20" y="519" width="280" height="31"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hok-bY-l6R">
+                                <rect key="frame" x="20" y="455" width="280" height="58.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% capitalization" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVr-aN-COz">
-                                        <rect key="frame" x="0.0" y="0.0" width="114" height="31"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xsq-Hy-x3v">
-                                        <rect key="frame" x="139" y="0.0" width="141" height="32"/>
-                                        <segments>
-                                            <segment title="-"/>
-                                            <segment title="M"/>
-                                            <segment title="Y"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="capitalizationSegment:" destination="JRV-ff-C6K" eventType="valueChanged" id="9gZ-kM-4fo"/>
-                                        </connections>
-                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="KaS-92-4ag">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="58.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-Pm-COB">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vz5-ER-PNV">
+                                                <rect key="frame" x="0.0" y="27.5" width="130" height="32"/>
+                                                <segments>
+                                                    <segment title="P"/>
+                                                    <segment title="$"/>
+                                                    <segment title="E"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="curencySegment:" destination="JRV-ff-C6K" eventType="valueChanged" id="6G1-tv-xvY"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="3JM-Ph-fek">
+                                        <rect key="frame" x="150" y="0.0" width="130" height="58.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% capitalization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVr-aN-COz">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xsq-Hy-x3v">
+                                                <rect key="frame" x="0.0" y="27.5" width="130" height="32"/>
+                                                <segments>
+                                                    <segment title="-"/>
+                                                    <segment title="M"/>
+                                                    <segment title="Y"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="capitalizationSegment:" destination="JRV-ff-C6K" eventType="valueChanged" id="9gZ-kM-4fo"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="tsY-8j-dpi" firstAttribute="top" secondItem="3t3-uX-DCo" secondAttribute="bottom" constant="30" id="492-kA-q2u"/>
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="dPp-cL-Jzt" secondAttribute="trailing" constant="20" id="4rh-ML-bYL"/>
                             <constraint firstItem="dPp-cL-Jzt" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="97m-yu-afP"/>
                             <constraint firstItem="kEC-aY-oyW" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="9fg-Yx-Nkz"/>
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="dPp-cL-Jzt" secondAttribute="trailing" constant="20" id="CMU-gf-2yn"/>
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="tsY-8j-dpi" secondAttribute="trailing" constant="20" id="HXl-ro-1NI"/>
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="CFH-XI-W0q" secondAttribute="trailing" constant="20" id="Ifc-Du-1jo"/>
-                            <constraint firstItem="aLc-Yp-lmr" firstAttribute="top" secondItem="ZPw-QL-l8c" secondAttribute="top" constant="20" id="MfU-rJ-yrB"/>
-                            <constraint firstItem="W6p-sa-6g6" firstAttribute="top" secondItem="dPp-cL-Jzt" secondAttribute="bottom" constant="30" id="PgD-uz-WGB"/>
                             <constraint firstItem="kEC-aY-oyW" firstAttribute="top" secondItem="WeI-88-9GK" secondAttribute="bottom" constant="20" id="QAg-v3-sA9"/>
-                            <constraint firstItem="W6p-sa-6g6" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="SUP-ng-Am1"/>
-                            <constraint firstItem="aLc-Yp-lmr" firstAttribute="centerX" secondItem="TyD-uh-pDT" secondAttribute="centerX" id="TCT-vd-904"/>
+                            <constraint firstItem="tsY-8j-dpi" firstAttribute="top" secondItem="ZPw-QL-l8c" secondAttribute="top" constant="30" id="RhH-yV-Tom"/>
                             <constraint firstItem="dPp-cL-Jzt" firstAttribute="top" secondItem="gTf-aj-q1H" secondAttribute="bottom" constant="20" id="VU8-se-T1J"/>
                             <constraint firstItem="dPp-cL-Jzt" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="Yin-je-EiA"/>
                             <constraint firstItem="CFH-XI-W0q" firstAttribute="top" secondItem="kEC-aY-oyW" secondAttribute="bottom" constant="20" id="a3C-CY-3KY"/>
                             <constraint firstItem="gTf-aj-q1H" firstAttribute="top" secondItem="CFH-XI-W0q" secondAttribute="bottom" constant="20" id="aOs-WF-1GQ"/>
+                            <constraint firstItem="Hok-bY-l6R" firstAttribute="top" secondItem="dPp-cL-Jzt" secondAttribute="bottom" constant="30" id="bBD-rK-XZV"/>
                             <constraint firstItem="tsY-8j-dpi" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="cAi-o5-ojV"/>
                             <constraint firstItem="WeI-88-9GK" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="cd0-PH-xwl"/>
                             <constraint firstItem="WeI-88-9GK" firstAttribute="top" secondItem="tsY-8j-dpi" secondAttribute="bottom" constant="20" id="fth-wX-WCv"/>
-                            <constraint firstItem="3t3-uX-DCo" firstAttribute="centerX" secondItem="TyD-uh-pDT" secondAttribute="centerX" id="g2z-8V-jkP"/>
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="WeI-88-9GK" secondAttribute="trailing" constant="20" id="gDk-n1-3hP"/>
+                            <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="Hok-bY-l6R" secondAttribute="trailing" constant="20" id="gth-DE-9Sz"/>
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="gTf-aj-q1H" secondAttribute="trailing" constant="20" id="hGH-3H-5U4"/>
                             <constraint firstItem="gTf-aj-q1H" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="jXL-e6-Qhm"/>
+                            <constraint firstItem="Hok-bY-l6R" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="sDH-FZ-xCH"/>
                             <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="kEC-aY-oyW" secondAttribute="trailing" constant="20" id="uwC-lV-gta"/>
-                            <constraint firstItem="3t3-uX-DCo" firstAttribute="top" secondItem="aLc-Yp-lmr" secondAttribute="bottom" constant="30" id="wbf-vE-hsG"/>
                             <constraint firstItem="CFH-XI-W0q" firstAttribute="leading" secondItem="ZPw-QL-l8c" secondAttribute="leading" constant="20" id="wxr-M7-xmf"/>
-                            <constraint firstItem="ZPw-QL-l8c" firstAttribute="trailing" secondItem="W6p-sa-6g6" secondAttribute="trailing" constant="20" id="yFc-gr-vLk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZPw-QL-l8c"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Okn-AY-K1C">
+                    <navigationItem key="navigationItem" title="New bank deposit" largeTitleDisplayMode="always" id="Okn-AY-K1C">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="omN-sg-dNo">
                             <connections>
                                 <action selector="cancelButton:" destination="JRV-ff-C6K" id="8E4-TL-TdI"/>
@@ -308,10 +312,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bankNameLabel" destination="3H7-Ee-RnB" id="Pg2-4b-Gaf"/>
+                        <outlet property="capitalisationSegment" destination="Xsq-Hy-x3v" id="rav-PI-sdl"/>
+                        <outlet property="currencySegment" destination="vz5-ER-PNV" id="YgV-Nh-6SF"/>
                         <outlet property="depositNameLabel" destination="xBH-iD-7xE" id="0dl-Sh-KVl"/>
                         <outlet property="durationLabel" destination="GY9-jq-uhG" id="8cD-dp-V4Y"/>
                         <outlet property="percentLabel" destination="7FO-Jp-CMf" id="qKG-f4-hF2"/>
-                        <outlet property="persentCapitalization" destination="Xsq-Hy-x3v" id="rav-PI-sdl"/>
                         <outlet property="saveButton" destination="LKq-nW-shy" id="F0n-uw-QsZ"/>
                         <outlet property="startDateLabel" destination="gVH-9V-Lre" id="vnM-cW-vc5"/>
                         <outlet property="sumLabel" destination="grx-sj-b04" id="Rzp-Uz-nDu"/>
@@ -342,8 +347,8 @@
         <scene sceneID="I5o-pJ-N53">
             <objects>
                 <navigationController id="1C3-uD-IHq" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GWt-VG-PaL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="GWt-VG-PaL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -355,4 +360,7 @@
             <point key="canvasLocation" x="103" y="117"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="af0-h7-2ZV"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -36,8 +36,8 @@ class MainTableViewController: UITableViewController {
 
         let deposit = deposites[indexPath.row]
 
-        let image = #imageLiteral(resourceName: "Gasprom")
-        let imageData = image.pngData()
+//        let image = #imageLiteral(resourceName: "Gasprom")
+//        let imageData = image.pngData()
         
         cell.name.text = deposit.depositName
         cell.aditionalInfo.text = "End date: \(deposit.startDate)"
@@ -55,19 +55,37 @@ class MainTableViewController: UITableViewController {
     
     // MARK: - Table view delegate
       
-      override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-          return 70
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deposit = deposites[indexPath.row]
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
+            
+            StorageManager.deleteObject(deposit)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        return [deleteAction]
     }
     
-    /*
+    
+    
+//      override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//          return 70
+//    }
+    
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showDetail" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let deposit = deposites[indexPath.row]
+            let newDepositVC = segue.destination as! NewDepositViewController
+            newDepositVC.currentDeposit = deposit
+        }
     }
-    */
+    
 
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         

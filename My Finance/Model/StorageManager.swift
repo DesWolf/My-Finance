@@ -18,4 +18,11 @@ class StorageManager {
             realm.add(deposit)
         }
     }
+    
+    static func deleteObject(_ deposit: Deposit) {
+        
+        try! realm.write {
+            realm.delete(deposit)
+        }
+    }
 }
