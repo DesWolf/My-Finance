@@ -30,7 +30,8 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var capitalization = 0
     var currency = 0
     var changed = 0
-    
+    var tableViewUpdated = 0
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -108,7 +109,7 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         capitalization = capitalisationSegment.selectedSegmentIndex
     }
     
-    @IBAction func pushSaveButton(_ sender: Any) {
+    static func pushSaveButton(_ sender: Any) {
     }
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -181,6 +182,7 @@ extension NewDepositViewController: UITextFieldDelegate {
         } else {
                 StorageManager.saveObject(newDeposit)
         }
+        //MainUIViewController.totalSumFunc()
     }
 
     

@@ -69,18 +69,22 @@ class MainTableViewController: UITableViewController {
     
     // MARK: - Table view delegate
       
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let deposit = deposites[indexPath.row]
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
-            
-            StorageManager.deleteObject(deposit)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-        
-        return [deleteAction]
-    }
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     
+        let deposit = deposites[indexPath.row]
+
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, complete in
+                StorageManager.deleteObject(deposit)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.reloadData()
+                complete(true)
+
+        }
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+              configuration.performsFirstActionWithFullSwipe = true
+        
+        return configuration
+    }
 
     // MARK: - Navigation
 
@@ -100,7 +104,7 @@ class MainTableViewController: UITableViewController {
         guard let newDepositVC = segue.source as? NewDepositViewController else { return }
         
         newDepositVC.saveDeposit()
-        //deposites.append(newDepositVC.newDeposit!)
+
         tableView.reloadData()
     }
     

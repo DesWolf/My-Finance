@@ -8,14 +8,19 @@
 
 import Foundation
 
-//class Calculations {
+//class Calculations: NewDepositViewController {
+//    
+//    var durationFromTextField = NewDepositViewController.dataShift(NewDepositViewController)
+//    
+//    
+//    
 //    
 //    func endDate (startDate: String) -> String {
 //       let date = startDate
 //       let formatter = DateFormatter()
 //       formatter.dateFormat = "dd.MM.yyyy"
 //       let timeIsIt = formatter.date(from: date)
-//       let y = timeIsIt!.addingTimeInterval(TimeInterval(durationCalculation(duration: durationLabel.text!)))
+//       let y = timeIsIt!.addingTimeInterval(TimeInterval(durationCalculation(duration: durationFromTextField)))
 //       return formatter.string(from: y)
 //    }
 //    
@@ -29,7 +34,7 @@ import Foundation
 //        
 //        var finalSum = sum
 //        var i = 0.0
-//        let duration = Double(Int(Double(durationCalculation(duration: NewDepositViewController.durationLabel.text!)) / 30.41))
+//        let duration1 = Double(Int(Double(durationCalculation(duration: durationFromTextField) / 30.41)))
 //        
 //        switch capitalization {
 //        case 0:

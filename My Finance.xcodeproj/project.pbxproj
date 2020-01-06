@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9E03D13323BF734100B0A3C0 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03D13223BF734000B0A3C0 /* StorageManager.swift */; };
 		9E03D13923C20FC400B0A3C0 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03D13823C20FC400B0A3C0 /* Calculations.swift */; };
+		9E05535723C2FC9300891CAB /* MainUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E05535623C2FC9300891CAB /* MainUIViewController.swift */; };
 		9E1DD94E23A5FA5300E32782 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1DD94D23A5FA5300E32782 /* SceneDelegate.swift */; };
 		9E1DD95323A5FA5300E32782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E1DD95123A5FA5300E32782 /* Main.storyboard */; };
 		9E1DD95523A5FA5400E32782 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E1DD95423A5FA5400E32782 /* Assets.xcassets */; };
@@ -18,6 +19,9 @@
 		9E55140923AB27BC00D5D9E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1DD94B23A5FA5300E32782 /* AppDelegate.swift */; };
 		9E5A6A5C23A751B1000DC9D0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A6A5B23A751B1000DC9D0 /* CustomTableViewCell.swift */; };
 		9E5A6A5E23A77328000DC9D0 /* InvestmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A6A5D23A77328000DC9D0 /* InvestmentModel.swift */; };
+		9EC7DE3523C33FC300BB76F0 /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7DE3423C33FC300BB76F0 /* CurrencyData.swift */; };
+		9EC7DE3723C34D2400BB76F0 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7DE3623C34D2400BB76F0 /* Course.swift */; };
+		9EC7DE3923C34DD300BB76F0 /* WebSiteDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7DE3823C34DD300BB76F0 /* WebSiteDescription.swift */; };
 		AE62613ABAD374957EE05300 /* Pods_My_Finance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F66AB5FA1E1E5DE6F2DEF90 /* Pods_My_Finance.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +31,7 @@
 		9ABFB591D74C7122761D4ACC /* Pods-My Finance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My Finance.release.xcconfig"; path = "Target Support Files/Pods-My Finance/Pods-My Finance.release.xcconfig"; sourceTree = "<group>"; };
 		9E03D13223BF734000B0A3C0 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		9E03D13823C20FC400B0A3C0 /* Calculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
+		9E05535623C2FC9300891CAB /* MainUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUIViewController.swift; sourceTree = "<group>"; };
 		9E1DD94823A5FA5300E32782 /* My Finance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Finance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E1DD94B23A5FA5300E32782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E1DD94D23A5FA5300E32782 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +43,9 @@
 		9E55140623AA333E00D5D9E7 /* NewDepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDepositViewController.swift; sourceTree = "<group>"; };
 		9E5A6A5B23A751B1000DC9D0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		9E5A6A5D23A77328000DC9D0 /* InvestmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentModel.swift; sourceTree = "<group>"; };
+		9EC7DE3423C33FC300BB76F0 /* CurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
+		9EC7DE3623C34D2400BB76F0 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		9EC7DE3823C34DD300BB76F0 /* WebSiteDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteDescription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 		9E03D13423C1EB2800B0A3C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9E05535623C2FC9300891CAB /* MainUIViewController.swift */,
 				9E1DD95F23A5FA8600E32782 /* MainTableViewController.swift */,
 				9E55140623AA333E00D5D9E7 /* NewDepositViewController.swift */,
 				9E5A6A5B23A751B1000DC9D0 /* CustomTableViewCell.swift */,
@@ -73,6 +82,9 @@
 		9E03D13523C1EB4200B0A3C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9EC7DE3823C34DD300BB76F0 /* WebSiteDescription.swift */,
+				9EC7DE3423C33FC300BB76F0 /* CurrencyData.swift */,
+				9EC7DE3623C34D2400BB76F0 /* Course.swift */,
 				9E5A6A5D23A77328000DC9D0 /* InvestmentModel.swift */,
 				9E03D13223BF734000B0A3C0 /* StorageManager.swift */,
 				9E03D13823C20FC400B0A3C0 /* Calculations.swift */,
@@ -254,12 +266,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E55140923AB27BC00D5D9E7 /* AppDelegate.swift in Sources */,
+				9EC7DE3723C34D2400BB76F0 /* Course.swift in Sources */,
 				9E1DD96023A5FA8700E32782 /* MainTableViewController.swift in Sources */,
 				9E55140823AB27B800D5D9E7 /* NewDepositViewController.swift in Sources */,
 				9E5A6A5E23A77328000DC9D0 /* InvestmentModel.swift in Sources */,
+				9EC7DE3923C34DD300BB76F0 /* WebSiteDescription.swift in Sources */,
 				9E5A6A5C23A751B1000DC9D0 /* CustomTableViewCell.swift in Sources */,
 				9E1DD94E23A5FA5300E32782 /* SceneDelegate.swift in Sources */,
+				9E05535723C2FC9300891CAB /* MainUIViewController.swift in Sources */,
 				9E03D13323BF734100B0A3C0 /* StorageManager.swift in Sources */,
+				9EC7DE3523C33FC300BB76F0 /* CurrencyData.swift in Sources */,
 				9E03D13923C20FC400B0A3C0 /* Calculations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
