@@ -61,9 +61,7 @@ class MainTableViewController: UITableViewController {
         } else {
             cell.imageOfDeposit.image = UIImage(named: deposit.bankName)
         }
-        
-        
-        
+
         return cell
 }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     @IBOutlet var saveButton: UIBarButtonItem!
     @IBOutlet var depositNameLabel: UITextField!
@@ -36,6 +36,7 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         super.viewDidLoad()
         
         saveButton.isEnabled = false
+      
         
         let textFields = [depositNameLabel, startDateLabel, durationLabel, percentLabel, sumLabel]
         for textField in textFields {
@@ -106,7 +107,22 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func capitalizationSegment(_ sender: Any) {
         
-        capitalization = capitalisationSegment.selectedSegmentIndex
+        switch capitalisationSegment.selectedSegmentIndex {
+        case 0:
+             capitalization = capitalisationSegment.selectedSegmentIndex
+        case 1:
+            if (durationCalculation(duration: durationLabel.text!) < 90.0) {
+                alertWrongData()
+                capitalisationSegment.selectedSegmentIndex = 0
+            }
+        case 2:
+            if (durationCalculation(duration: durationLabel.text!) < 365.0) {
+                alertWrongData()
+                capitalisationSegment.selectedSegmentIndex = 0
+            }
+        default:
+            break
+        }
     }
     
     static func pushSaveButton(_ sender: Any) {
@@ -143,7 +159,7 @@ extension NewDepositViewController: UITextFieldDelegate {
 
     //MARK: Alert Wrong Duration
     func alertWrongData() {
-        let alert = UIAlertController(title: "Error", message: "Can't calculate. Please change Duration.",
+        let alert = UIAlertController(title: "Error", message: "Невозможно рассчитать. Пожалуйста, измените длительность вклада.",
                                       preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: { _ in }))
         self.present(alert, animated: true, completion: nil)
@@ -160,7 +176,7 @@ extension NewDepositViewController: UITextFieldDelegate {
                                   percent: Double(percentLabel.text!) ?? 0.0,
                                   sum: Double(sumLabel.text!) ?? 0.0,
                                   finalSum: finalSumCalculation(duration: durationCalculation(duration: durationLabel.text!),
-                                                                   percent: Double(percentLabel.text!)!,
+                                                                   percent: Double(percentLabel.text!) ?? 0,
                                                                    sum: Double(sumLabel.text!)!,
                                                                    capitalization: capitalization),
                                   capitalisationSegment: capitalization,
@@ -182,7 +198,7 @@ extension NewDepositViewController: UITextFieldDelegate {
         } else {
                 StorageManager.saveObject(newDeposit)
         }
-        //MainUIViewController.totalSumFunc()
+  
     }
 
     
@@ -219,8 +235,10 @@ extension NewDepositViewController: UITextFieldDelegate {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         let timeIsIt = formatter.date(from: date)
-        let y = timeIsIt!.addingTimeInterval(TimeInterval(durationCalculation(duration: durationLabel.text!)))
+        let y = timeIsIt!.addingTimeInterval((durationCalculation(duration: durationLabel.text!)) * 24 * 60 * 60)
+        
         return formatter.string(from: y)
+        
      }
     
     func durationCalculation(duration: String) -> Double {
@@ -263,7 +281,7 @@ extension NewDepositViewController: UITextFieldDelegate {
         default:
             break
         }
-        return Double((String(format: "%.2f", finalSum)))  ?? 0
+        return Double((String(format: "%.2f", finalSum)))  ?? 0.0
     }
 
 }
