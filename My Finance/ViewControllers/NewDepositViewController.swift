@@ -26,17 +26,17 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     let datePicker = UIDatePicker()
     let durationPicker = UIPickerView()
     let duration = ["30 days", "90 days", "180 days", "365 days", "730 days", "1095 days", "1825 days"]
-    let bankNames = ["Sberbank", "VTB", "Gasprom"]
-    var capitalization = 0
-    var currency = 0
+    let bankNames = Banklist.bankNames
+   
+  
     var changed = 0
     var tableViewUpdated = 0
    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         saveButton.isEnabled = false
-      
         
         let textFields = [depositNameLabel, startDateLabel, durationLabel, percentLabel, sumLabel]
         for textField in textFields {
@@ -101,15 +101,13 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     //MARK: Segment Countrols
     
     @IBAction func curencySegment(_ sender: Any) {
-        
-        currency = currencySegment.selectedSegmentIndex
     }
     
     @IBAction func capitalizationSegment(_ sender: Any) {
         
         switch capitalisationSegment.selectedSegmentIndex {
         case 0:
-             capitalization = capitalisationSegment.selectedSegmentIndex
+                capitalisationSegment.selectedSegmentIndex = 0
         case 1:
             if (durationCalculation(duration: durationLabel.text!) < 90.0) {
                 alertWrongData()
@@ -159,7 +157,7 @@ extension NewDepositViewController: UITextFieldDelegate {
 
     //MARK: Alert Wrong Duration
     func alertWrongData() {
-        let alert = UIAlertController(title: "Error", message: "Невозможно рассчитать. Пожалуйста, измените длительность вклада.",
+        let alert = UIAlertController(title: "Ошибка!", message: "Невозможно рассчитать. Пожалуйста, измените длительность вклада.",
                                       preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: { _ in }))
         self.present(alert, animated: true, completion: nil)
@@ -173,14 +171,15 @@ extension NewDepositViewController: UITextFieldDelegate {
                                   startDate: startDateLabel.text!,
                                   endDate: endDate(startDate: startDateLabel.text!),
                                   duration: durationLabel.text!,
-                                  percent: Double(percentLabel.text!) ?? 0.0,
+                                  percent: persentFloatCheck(numberFromText: percentLabel.text!),
+
                                   sum: Double(sumLabel.text!) ?? 0.0,
                                   finalSum: finalSumCalculation(duration: durationCalculation(duration: durationLabel.text!),
-                                                                   percent: Double(percentLabel.text!) ?? 0,
+                                                                   percent: persentFloatCheck(numberFromText: percentLabel.text!),
                                                                    sum: Double(sumLabel.text!)!,
-                                                                   capitalization: capitalization),
-                                  capitalisationSegment: capitalization,
-                                  currencySegment: currency
+                                                                   capitalization: capitalisationSegment.selectedSegmentIndex),
+                                  capitalisationSegment: capitalisationSegment.selectedSegmentIndex,
+                                  currencySegment: currencySegment.selectedSegmentIndex
                                 )
         if currentDeposit != nil {
             try! realm.write {
@@ -201,6 +200,21 @@ extension NewDepositViewController: UITextFieldDelegate {
   
     }
 
+    private func persentFloatCheck (numberFromText: String) -> Double {
+        
+        var result = 0.0
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        
+        if let number = formatter.number(from: numberFromText) {
+            result = number.doubleValue
+        }
+        else{
+            result = Double(numberFromText) ?? 0.0
+            }
+        
+        return Double(result)
+    }
     
     private func setupEditScreen() {
            
@@ -284,4 +298,5 @@ extension NewDepositViewController: UITextFieldDelegate {
         return Double((String(format: "%.2f", finalSum)))  ?? 0.0
     }
 
+    
 }

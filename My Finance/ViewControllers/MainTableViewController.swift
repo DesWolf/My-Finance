@@ -55,7 +55,13 @@ class MainTableViewController: UITableViewController {
         cell.aditionalInfo.text = "\(deposit.startDate) - \(deposit.endDate)"
         cell.sum.text = "\(deposit.sum) \(currencySegment(currencySegment: deposit.currencySegment))"
         cell.persent.text = "\(deposit.percent)% (\(deposit.finalSum))"
-
+        
+        
+        //let myColor = UIColor.
+        cell.imageOfDeposit.layer.cornerRadius = cell.frame.size.height / 2.45
+        //cell.imageOfDeposit.layer.borderWidth = 1.5
+       // cell.imageOfDeposit.layer.borderColor = myColor.cgColor
+        cell.imageOfDeposit.clipsToBounds = true
         if deposit.bankName == "" {
             cell.imageOfDeposit.image = #imageLiteral(resourceName: "Safe")
         } else {
