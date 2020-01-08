@@ -94,11 +94,17 @@ class MainTableViewController: UITableViewController {
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
         if segue.identifier == "showDetail" {
+            
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            
             let deposit = deposites[indexPath.row]
-            let newDepositVC = segue.destination as! NewDepositViewController
+            let navController = segue.destination as! UINavigationController
+            let newDepositVC = navController.viewControllers.first as! NewDepositViewController
+          
             newDepositVC.currentDeposit = deposit
+            
         }
     }
     

@@ -182,6 +182,7 @@ extension NewDepositViewController: UITextFieldDelegate {
                                   currencySegment: currencySegment.selectedSegmentIndex
                                 )
         if currentDeposit != nil {
+        
             try! realm.write {
                 currentDeposit?.depositName = newDeposit.depositName
                 currentDeposit?.bankName = newDeposit.bankName
@@ -236,12 +237,15 @@ extension NewDepositViewController: UITextFieldDelegate {
     
     private func setupNavigationBar() {
         
-        if let topItem = navigationController?.navigationBar.topItem {
-            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        }
-        navigationItem.leftBarButtonItem = nil
+//        if let topItem = navigationController?.navigationBar.topItem {
+//            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//        }
+        
         title = currentDeposit?.depositName
+    //title?.
+//        navigationController
         saveButton.isEnabled = true
+        
     }
     
     func endDate (startDate: String) -> String {

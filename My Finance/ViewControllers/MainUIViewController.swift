@@ -50,8 +50,11 @@ class MainUIViewController: UIViewController{
             clickButton = 0
        }
     }
-    
-    func displaiedSum() -> (String, String) {
+}
+    extension MainUIViewController: UITextFieldDelegate {
+        
+
+    private func displaiedSum() -> (String, String) {
         
         var displaiedSum = ""
         var displaiedText = ""
@@ -60,11 +63,11 @@ class MainUIViewController: UIViewController{
             displaiedText = "Cумма вкладов на текущий момент:"
             switch currencySegment.selectedSegmentIndex {
             case 0:
-                displaiedSum = "\(Int(getSumFromRealm().0)) ₽"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().0))) ₽"
             case 1:
-                displaiedSum = "\(Int(getSumFromRealm().0 / usd)) $"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().0 / usd))) $"
             case 2:
-                displaiedSum = "\(Int(getSumFromRealm().0 / eur)) €"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().0 / eur))) €"
             default:
                 break
             }
@@ -73,20 +76,27 @@ class MainUIViewController: UIViewController{
             displaiedText = "Cумма вкладов после \(getDataOfLastDeposit()):"
             switch currencySegment.selectedSegmentIndex {
             case 0:
-                displaiedSum = "\(Int(getSumFromRealm().1)) ₽"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().1))) ₽"
             case 1:
-                displaiedSum = "\(Int(getSumFromRealm().1 / usd)) $"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().1 / usd))) $"
             case 2:
-                displaiedSum = "\(Int(getSumFromRealm().1 / eur)) €"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().1 / eur))) €"
             default:
                 break
             }
         }
        
         return (displaiedText, displaiedSum)
-        
     }
     
+    private func separatedNumber(_ number: Any) -> String {
+            guard let itIsANumber = number as? NSNumber else { return "Not a number" }
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.groupingSeparator = " "
+        return formatter.string(from: itIsANumber)!
+        }
+        
     private func getSumFromRealm () -> (Double, Double){
         
         let deposites = realm.objects(Deposit.self)
@@ -172,3 +182,4 @@ class MainUIViewController: UIViewController{
       
     }
 }
+
