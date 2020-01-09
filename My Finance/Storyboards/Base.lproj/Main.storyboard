@@ -7,109 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Investment-->
-        <scene sceneID="1I6-nt-gzC">
-            <objects>
-                <tableViewController id="BPJ-Ih-6T8" customClass="MainTableViewController" customModule="My_Finance" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nAx-ZA-TYq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="70" id="SD7-99-wFz" customClass="CustomTableViewCell" customModule="My_Finance" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="70"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SD7-99-wFz" id="27V-UN-DeA">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FvH-Mh-J4g">
-                                            <rect key="frame" x="75" y="12.5" width="280" height="45.5"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="1xT-i5-1gY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="45.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Instrument" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="qzv-Dm-bra">
-                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AditionalInfo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="0er-al-OwT">
-                                                            <rect key="frame" x="0.0" y="31" width="180" height="14.5"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="o3W-9o-Rx0">
-                                                    <rect key="frame" x="180" y="0.0" width="100" height="45.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sum" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="kg9-KW-bFu">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="23.5"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PercentYearly" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Snx-Jy-X1H">
-                                                            <rect key="frame" x="0.0" y="28.5" width="100" height="17"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="o3W-9o-Rx0" firstAttribute="leading" secondItem="FvH-Mh-J4g" secondAttribute="leading" constant="180" id="Arr-eB-eZA"/>
-                                            </constraints>
-                                        </stackView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="csq-vw-6Oh">
-                                            <rect key="frame" x="20" y="15" width="40" height="40"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="GFI-qC-FJ8"/>
-                                                <constraint firstAttribute="height" constant="40" id="NH3-Yc-xpu"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="FvH-Mh-J4g" secondAttribute="bottom" constant="1" id="4ja-eu-qZS"/>
-                                        <constraint firstItem="FvH-Mh-J4g" firstAttribute="top" secondItem="27V-UN-DeA" secondAttribute="topMargin" constant="1.5" id="8Wt-RW-Da6"/>
-                                        <constraint firstItem="csq-vw-6Oh" firstAttribute="top" secondItem="27V-UN-DeA" secondAttribute="top" constant="15" id="UW3-G7-ghX"/>
-                                        <constraint firstItem="FvH-Mh-J4g" firstAttribute="leading" secondItem="csq-vw-6Oh" secondAttribute="trailing" constant="15" id="jBS-lz-C2j"/>
-                                        <constraint firstAttribute="bottom" secondItem="csq-vw-6Oh" secondAttribute="bottom" constant="15" id="lG5-hG-Htk"/>
-                                        <constraint firstItem="csq-vw-6Oh" firstAttribute="leading" secondItem="27V-UN-DeA" secondAttribute="leading" constant="20" id="xmQ-GF-aqD"/>
-                                        <constraint firstAttribute="trailing" secondItem="FvH-Mh-J4g" secondAttribute="trailing" constant="20" id="yUV-bc-Z0D"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="aditionalInfo" destination="0er-al-OwT" id="PnQ-9T-9QX"/>
-                                    <outlet property="imageOfDeposit" destination="csq-vw-6Oh" id="3Jg-o8-0ur"/>
-                                    <outlet property="name" destination="qzv-Dm-bra" id="YEW-ej-ipI"/>
-                                    <outlet property="persent" destination="Snx-Jy-X1H" id="Q2B-mc-oOf"/>
-                                    <outlet property="sum" destination="kg9-KW-bFu" id="QVZ-X3-XMo"/>
-                                    <segue destination="JRV-ff-C6K" kind="show" identifier="showDetail" id="af0-h7-2ZV"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="BPJ-Ih-6T8" id="CL1-8U-DW3"/>
-                            <outlet property="delegate" destination="BPJ-Ih-6T8" id="nMI-Hd-Wz1"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="My Investment" largeTitleDisplayMode="never" id="PAE-6e-tZT">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6Xy-0q-Wb6">
-                            <connections>
-                                <segue destination="sej-wm-I2U" kind="presentation" modalPresentationStyle="fullScreen" id="0Wx-01-Fw0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VoW-s6-2nm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="56" y="24"/>
-        </scene>
         <!--Добавить вклад-->
         <scene sceneID="48O-hh-lvc">
             <objects>
@@ -119,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tsY-8j-dpi">
-                                <rect key="frame" x="20" y="122" width="335" height="34"/>
+                                <rect key="frame" x="20" y="64" width="335" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название вклада*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6f-3G-d9N">
                                         <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
@@ -135,7 +32,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WeI-88-9GK">
-                                <rect key="frame" x="20" y="176" width="335" height="34"/>
+                                <rect key="frame" x="20" y="118" width="335" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Банк" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHj-NC-SU9">
                                         <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
@@ -151,7 +48,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kEC-aY-oyW">
-                                <rect key="frame" x="20" y="230" width="335" height="34"/>
+                                <rect key="frame" x="20" y="172" width="335" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата начала*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxi-jL-SY1">
                                         <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
@@ -167,7 +64,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CFH-XI-W0q">
-                                <rect key="frame" x="20" y="284" width="335" height="34"/>
+                                <rect key="frame" x="20" y="226" width="335" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Длительность*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awd-bv-Ggu">
                                         <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
@@ -183,7 +80,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gTf-aj-q1H">
-                                <rect key="frame" x="20" y="338" width="335" height="34"/>
+                                <rect key="frame" x="20" y="280" width="335" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% годовых*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HA-py-Ldw">
                                         <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
@@ -199,7 +96,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dPp-cL-Jzt">
-                                <rect key="frame" x="20" y="392" width="335" height="34"/>
+                                <rect key="frame" x="20" y="334" width="335" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма вклада*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJT-lg-CoR">
                                         <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
@@ -215,7 +112,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hok-bY-l6R">
-                                <rect key="frame" x="20" y="446" width="335" height="58.5"/>
+                                <rect key="frame" x="20" y="388" width="335" height="58.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="KaS-92-4ag">
                                         <rect key="frame" x="0.0" y="0.0" width="157.5" height="58.5"/>
@@ -319,7 +216,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I8J-I8-apR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="zTk-ph-qJA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1318" y="804"/>
+            <point key="canvasLocation" x="842" y="1518"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6qa-IP-guC">
@@ -343,7 +240,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="riM-Bl-TDf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="840" y="1598"/>
+            <point key="canvasLocation" x="33" y="1518"/>
         </scene>
         <!--MainUI View Controller-->
         <scene sceneID="BQV-Vx-2oM">
@@ -421,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aHt-ci-Yd8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-813.75" y="836.61971830985919"/>
+            <point key="canvasLocation" x="-815" y="860"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wsZ-Ef-FBX">
@@ -437,23 +334,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yg0-lq-kix" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="55" y="1598"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="I5o-pJ-N53">
-            <objects>
-                <navigationController id="1C3-uD-IHq" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="GWt-VG-PaL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="BPJ-Ih-6T8" kind="relationship" relationship="rootViewController" id="L6A-ff-HHa"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gka-TF-66o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-814" y="23"/>
+            <point key="canvasLocation" x="841" y="916"/>
         </scene>
         <!--Мои Вклады-->
         <scene sceneID="8eX-Zu-U62">
@@ -547,16 +428,24 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Мои Вклады" largeTitleDisplayMode="always" id="aC6-ge-q2D">
+                        <barButtonItem key="leftBarButtonItem" image="sorting1" id="rEd-iM-E4w">
+                            <connections>
+                                <action selector="sortButtonPush:" destination="985-X7-75A" id="FwC-pd-BbQ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eYQ-Mg-GcZ">
                             <connections>
                                 <segue destination="sej-wm-I2U" kind="presentation" modalPresentationStyle="fullScreen" id="HdR-iz-SBI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sortButton" destination="rEd-iM-E4w" id="tu4-G1-98L"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="np2-Oy-ifk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="58" y="805"/>
+            <point key="canvasLocation" x="33" y="916"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S1D-oE-hxb">
@@ -572,11 +461,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYY-st-Akn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-814" y="1598"/>
+            <point key="canvasLocation" x="-815" y="1518"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="sorting1" width="32" height="22"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HdR-iz-SBI"/>
-        <segue reference="XVf-4T-8pd"/>
+        <segue reference="xXG-aG-sN5"/>
     </inferredMetricsTieBreakers>
 </document>

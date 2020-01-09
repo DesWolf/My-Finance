@@ -27,7 +27,6 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     let durationPicker = UIPickerView()
     let duration = ["30 days", "90 days", "180 days", "365 days", "730 days", "1095 days", "1825 days"]
     let bankNames = Banklist.bankNames
-   
   
     var changed = 0
     var tableViewUpdated = 0
@@ -124,6 +123,7 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     static func pushSaveButton(_ sender: Any) {
+ 
     }
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -149,14 +149,14 @@ extension NewDepositViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    func getDateFromPicker(){
+    private func getDateFromPicker(){
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         startDateLabel.text = formatter.string(from:datePicker.date)
     }
 
     //MARK: Alert Wrong Duration
-    func alertWrongData() {
+    private func alertWrongData() {
         let alert = UIAlertController(title: "Ошибка!", message: "Невозможно рассчитать. Пожалуйста, измените длительность вклада.",
                                       preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: { _ in }))
@@ -164,12 +164,12 @@ extension NewDepositViewController: UITextFieldDelegate {
     }
     
     //MARK: Save New Deposit
-    func saveDeposit() {
+    private func saveDeposit() {
         
         let newDeposit = Deposit( depositName: depositNameLabel.text!,
                                   bankName: bankNameLabel.text ?? "",
-                                  startDate: startDateLabel.text!,
-                                  endDate: endDate(startDate: startDateLabel.text!),
+                                  startDate: NewDepositViewController.dateFromString(startDateLabel.text!),
+                                  endDate: endDate(),
                                   duration: durationLabel.text!,
                                   percent: persentFloatCheck(numberFromText: percentLabel.text!),
 
@@ -198,7 +198,6 @@ extension NewDepositViewController: UITextFieldDelegate {
         } else {
                 StorageManager.saveObject(newDeposit)
         }
-  
     }
 
     private func persentFloatCheck (numberFromText: String) -> Double {
@@ -212,7 +211,7 @@ extension NewDepositViewController: UITextFieldDelegate {
         }
         else{
             result = Double(numberFromText) ?? 0.0
-            }
+        }
         
         return Double(result)
     }
@@ -225,47 +224,36 @@ extension NewDepositViewController: UITextFieldDelegate {
                
             depositNameLabel.text = currentDeposit?.depositName
             bankNameLabel.text = currentDeposit?.bankName
-            startDateLabel.text = currentDeposit?.startDate
+            startDateLabel.text = NewDepositViewController.dateToString(dateString: currentDeposit?.startDate)
             durationLabel.text = currentDeposit?.duration
             percentLabel.text =  "\(currentDeposit?.percent ?? 0)"
             sumLabel.text = "\(currentDeposit?.sum ?? 0)"
             capitalisationSegment.selectedSegmentIndex = currentDeposit?.capitalisationSegment ?? 0
             currencySegment.selectedSegmentIndex = currentDeposit?.currencySegment ?? 0
-            
            }
        }
     
     private func setupNavigationBar() {
-        
-//        if let topItem = navigationController?.navigationBar.topItem {
-//            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//        }
-        
-        title = currentDeposit?.depositName
-    //title?.
-//        navigationController
-        saveButton.isEnabled = true
-        
-    }
     
-    func endDate (startDate: String) -> String {
-        let date = startDate
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        let timeIsIt = formatter.date(from: date)
-        let y = timeIsIt!.addingTimeInterval((durationCalculation(duration: durationLabel.text!)) * 24 * 60 * 60)
+        title = currentDeposit?.depositName
+        saveButton.isEnabled = true
+    }
+
+    private func endDate () -> Date {
+        let dateFromString = NewDepositViewController.dateFromString(startDateLabel.text!)
+        let durationTime = (durationCalculation(duration: durationLabel.text!))
+        let endDate = dateFromString.addingTimeInterval((durationTime) * 24 * 60 * 60)
         
-        return formatter.string(from: y)
-        
+        return (endDate)
      }
     
-    func durationCalculation(duration: String) -> Double {
+    private func durationCalculation(duration: String) -> Double {
         
         return Double(duration.components(separatedBy: " ").first!) ?? 0.0
     }
     
     // MARK: Final Sum Calculation
-    func finalSumCalculation(duration: Double, percent: Double, sum: Double, capitalization: Int ) -> Double {
+    private func finalSumCalculation(duration: Double, percent: Double, sum: Double, capitalization: Int ) -> Double {
         
         var finalSum = sum
         var i = 0.0
@@ -302,5 +290,30 @@ extension NewDepositViewController: UITextFieldDelegate {
         return Double((String(format: "%.2f", finalSum)))  ?? 0.0
     }
 
+    static func dateFromString(_ value: String) -> Date {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        if let newDate = dateFormatter.date(from: value) {
+            return newDate
+        }
+        else {
+            return dateFormatter.date(from: "")!
+        }
+    }
     
+    static func dateToString(dateString: Date?) -> String {
+         
+        var dateResult = ""
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+         
+        if  dateString == nil {
+            dateResult = ""
+        } else {
+            dateResult = formatter.string(from: dateString!)
+        }
+         
+        return dateResult
+     }
 }

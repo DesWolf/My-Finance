@@ -11,7 +11,10 @@ import RealmSwift
 
 class MainTableViewController: UITableViewController {
 
+    @IBOutlet var sortButton: UIBarButtonItem!
+    
     var deposites: Results<Deposit>!
+    var ascendingSorting = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +25,12 @@ class MainTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-
+       
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         return deposites.isEmpty ? 0 : deposites.count
     }
 
@@ -48,20 +51,19 @@ class MainTableViewController: UITableViewController {
             default:
                 break
             }
-            return (currency)
+            
+            return currency
         }
         
         cell.name.text = deposit.depositName
-        cell.aditionalInfo.text = "\(deposit.startDate) - \(deposit.endDate)"
+        cell.aditionalInfo.text = "\(NewDepositViewController.dateToString(dateString: deposit.startDate)) - \(NewDepositViewController.dateToString(dateString: deposit.endDate))"
         cell.sum.text = "\(deposit.sum) \(currencySegment(currencySegment: deposit.currencySegment))"
         cell.persent.text = "\(deposit.percent)% (\(deposit.finalSum))"
-        
-        
-        //let myColor = UIColor.
         cell.imageOfDeposit.layer.cornerRadius = cell.frame.size.height / 2.45
         //cell.imageOfDeposit.layer.borderWidth = 1.5
        // cell.imageOfDeposit.layer.borderColor = myColor.cgColor
         cell.imageOfDeposit.clipsToBounds = true
+        
         if deposit.bankName == "" {
             cell.imageOfDeposit.image = #imageLiteral(resourceName: "Safe")
         } else {
@@ -92,7 +94,6 @@ class MainTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
         if segue.identifier == "showDetail" {
@@ -104,19 +105,34 @@ class MainTableViewController: UITableViewController {
             let newDepositVC = navController.viewControllers.first as! NewDepositViewController
           
             newDepositVC.currentDeposit = deposit
-            
         }
     }
     
+    @IBAction func sortButtonPush(_ sender: Any) {
+        
+        ascendingSorting.toggle()
+                
+            if ascendingSorting {
+                sortButton.image = #imageLiteral(resourceName: "sorting2")
+            } else {
+                sortButton.image = #imageLiteral(resourceName: "sorting1")
+            }
+        
+        sorting()
+    }
+            
+    private func sorting() {
+                
+        deposites = deposites.sorted(byKeyPath: "depositName", ascending: ascendingSorting)
+        tableView.reloadData()
+    }
 
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         
         guard let newDepositVC = segue.source as? NewDepositViewController else { return }
         
         newDepositVC.saveDeposit()
-
         tableView.reloadData()
     }
-    
-
 }
+

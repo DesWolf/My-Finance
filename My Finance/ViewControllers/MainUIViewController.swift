@@ -51,9 +51,8 @@ class MainUIViewController: UIViewController{
        }
     }
 }
-    extension MainUIViewController: UITextFieldDelegate {
+extension MainUIViewController: UITextFieldDelegate {
         
-
     private func displaiedSum() -> (String, String) {
         
         var displaiedSum = ""
@@ -74,6 +73,7 @@ class MainUIViewController: UIViewController{
             
         } else {
             displaiedText = "Cумма вкладов после \(getDataOfLastDeposit()):"
+            
             switch currencySegment.selectedSegmentIndex {
             case 0:
                 displaiedSum = "\(separatedNumber(Int(getSumFromRealm().1))) ₽"
@@ -90,12 +90,13 @@ class MainUIViewController: UIViewController{
     }
     
     private func separatedNumber(_ number: Any) -> String {
-            guard let itIsANumber = number as? NSNumber else { return "Not a number" }
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            formatter.groupingSeparator = " "
+        guard let itIsANumber = number as? NSNumber else { return "Not a number" }
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = " "
+    
         return formatter.string(from: itIsANumber)!
-        }
+    }
         
     private func getSumFromRealm () -> (Double, Double){
         
@@ -134,7 +135,7 @@ class MainUIViewController: UIViewController{
         
         let deposites = realm.objects(Deposit.self)
         var i = 0
-        var endDates = [String]()
+        var endDates = [Date]()
         
         while i < deposites.count {
               
@@ -143,17 +144,12 @@ class MainUIViewController: UIViewController{
             i += 1
         }
         
-        endDates.sort {
-            let formatterDate = DateFormatter()
-            formatterDate.dateFormat = "dd/MM/yyyy"
-            return formatterDate.date(from: $0)! < formatterDate.date(from: $1)!
-        }
+        endDates.sort()
         
-        let lastDate = String(endDates[0])
+        return (NewDepositViewController.dateToString(dateString: endDates.last))
         
-        return (lastDate)
     }
-
+  
 
     private func fetchData() {
 
@@ -179,7 +175,9 @@ class MainUIViewController: UIViewController{
    
     }
     @IBAction func currencySlider(_ sender: Any) {
-      
     }
 }
+
+
+
 

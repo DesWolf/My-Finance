@@ -15,14 +15,12 @@ struct CurrencyData: Decodable {
     let PreviousURL: String
     let Timestamp: String
     let Valute: Valute
-  
 }
 
 struct Valute: Decodable {
     
     let USD: Currency
     let EUR: Currency
-
 }
 
 struct Currency: Decodable {
