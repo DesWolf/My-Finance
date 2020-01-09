@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UVy-7l-JmP">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,119 +12,119 @@
             <objects>
                 <viewController id="JRV-ff-C6K" customClass="NewDepositViewController" customModule="My_Finance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TyD-uh-pDT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="542"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tsY-8j-dpi">
-                                <rect key="frame" x="20" y="64" width="335" height="34"/>
+                                <rect key="frame" x="20" y="64" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название вклада*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6f-3G-d9N">
-                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Новогодний" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xBH-iD-7xE">
-                                        <rect key="frame" x="167.5" y="0.0" width="167.5" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Новогодний" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xBH-iD-7xE">
+                                        <rect key="frame" x="140" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WeI-88-9GK">
-                                <rect key="frame" x="20" y="118" width="335" height="34"/>
+                                <rect key="frame" x="20" y="118" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Банк" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHj-NC-SU9">
-                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sberbank" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3H7-Ee-RnB">
-                                        <rect key="frame" x="167.5" y="0.0" width="167.5" height="34"/>
+                                        <rect key="frame" x="140" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kEC-aY-oyW">
-                                <rect key="frame" x="20" y="172" width="335" height="34"/>
+                                <rect key="frame" x="20" y="172" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата начала*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxi-jL-SY1">
-                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10.12.2019" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gVH-9V-Lre">
-                                        <rect key="frame" x="167.5" y="0.0" width="167.5" height="34"/>
+                                        <rect key="frame" x="140" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CFH-XI-W0q">
-                                <rect key="frame" x="20" y="226" width="335" height="34"/>
+                                <rect key="frame" x="20" y="226" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Длительность*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awd-bv-Ggu">
-                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1 year" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GY9-jq-uhG">
-                                        <rect key="frame" x="167.5" y="0.0" width="167.5" height="34"/>
+                                        <rect key="frame" x="140" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gTf-aj-q1H">
-                                <rect key="frame" x="20" y="280" width="335" height="34"/>
+                                <rect key="frame" x="20" y="280" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% годовых*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HA-py-Ldw">
-                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5,25%" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7FO-Jp-CMf">
-                                        <rect key="frame" x="167.5" y="0.0" width="167.5" height="34"/>
+                                        <rect key="frame" x="140" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dPp-cL-Jzt">
-                                <rect key="frame" x="20" y="334" width="335" height="34"/>
+                                <rect key="frame" x="20" y="334" width="280" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма вклада*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJT-lg-CoR">
-                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10000" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grx-sj-b04">
-                                        <rect key="frame" x="167.5" y="0.0" width="167.5" height="34"/>
+                                        <rect key="frame" x="140" y="0.0" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hok-bY-l6R">
-                                <rect key="frame" x="20" y="388" width="335" height="58.5"/>
+                                <rect key="frame" x="20" y="388" width="280" height="58.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="KaS-92-4ag">
-                                        <rect key="frame" x="0.0" y="0.0" width="157.5" height="58.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="58.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Валюта" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-Pm-COB">
-                                                <rect key="frame" x="0.0" y="0.0" width="157.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vz5-ER-PNV">
-                                                <rect key="frame" x="0.0" y="27.5" width="157.5" height="32"/>
+                                                <rect key="frame" x="0.0" y="27.5" width="130" height="32"/>
                                                 <segments>
                                                     <segment title="₽"/>
                                                     <segment title="$"/>
@@ -137,16 +137,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="3JM-Ph-fek">
-                                        <rect key="frame" x="177.5" y="0.0" width="157.5" height="58.5"/>
+                                        <rect key="frame" x="150" y="0.0" width="130" height="58.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Капитализация %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVr-aN-COz">
-                                                <rect key="frame" x="0.0" y="0.0" width="157.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Капитализация %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sVr-aN-COz">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xsq-Hy-x3v">
-                                                <rect key="frame" x="0.0" y="27.5" width="157.5" height="32"/>
+                                                <rect key="frame" x="0.0" y="27.5" width="130" height="32"/>
                                                 <segments>
                                                     <segment title="-"/>
                                                     <segment title="M"/>
@@ -223,7 +223,7 @@
             <objects>
                 <navigationController id="B7p-Z4-ZuS" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="2GQ-lm-8ov">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -247,23 +247,23 @@
             <objects>
                 <viewController id="UVy-7l-JmP" customClass="MainUIViewController" customModule="My_Finance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Xp-pW-qIS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1c8-Jn-rQN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="542"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
                                 <connections>
                                     <segue destination="L1L-vf-Qrc" kind="embed" id="xXD-3K-YHq"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCK-za-7RO">
-                                <rect key="frame" x="16" y="573" width="343" height="43"/>
+                                <rect key="frame" x="16" y="474" width="288" height="43"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4vK-p1-Eum">
-                                <rect key="frame" x="0.0" y="636" width="375" height="32"/>
+                                <rect key="frame" x="0.0" y="537" width="320" height="32"/>
                                 <segments>
                                     <segment title="₽"/>
                                     <segment title="$"/>
@@ -274,13 +274,13 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма вкладов на текущий момент:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYU-b0-f54">
-                                <rect key="frame" x="20" y="550" width="335" height="15"/>
+                                <rect key="frame" x="20" y="451" width="280" height="15"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTT-C0-s9a">
-                                <rect key="frame" x="20" y="560" width="335" height="66"/>
+                                <rect key="frame" x="20" y="461" width="280" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="C0b-2n-ewe"/>
                                 </constraints>
@@ -325,7 +325,7 @@
             <objects>
                 <navigationController id="sej-wm-I2U" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dfa-o3-JdO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -341,19 +341,19 @@
             <objects>
                 <tableViewController id="985-X7-75A" customClass="MainTableViewController" customModule="My_Finance" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pte-JW-1DO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="542"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="70" id="slb-TA-E3a" customClass="CustomTableViewCell" customModule="My_Finance" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="slb-TA-E3a" id="vCj-Bf-GVy">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ehd-zi-KTC">
-                                            <rect key="frame" x="95" y="12.5" width="260" height="45.5"/>
+                                            <rect key="frame" x="95" y="12.5" width="205" height="45.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ftA-IE-Vr8">
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="45.5"/>
@@ -373,16 +373,16 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RkQ-Le-d1S">
-                                                    <rect key="frame" x="180" y="0.0" width="80" height="45.5"/>
+                                                    <rect key="frame" x="180" y="0.0" width="25" height="45.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sum" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="XEE-h6-XlM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PercentYearly" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="T9y-rL-RJh">
-                                                            <rect key="frame" x="0.0" y="28.5" width="80" height="17"/>
+                                                            <rect key="frame" x="0.0" y="28.5" width="25" height="17"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -452,7 +452,7 @@
             <objects>
                 <navigationController id="L1L-vf-Qrc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="gi5-HX-BEx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

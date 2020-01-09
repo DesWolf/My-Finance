@@ -58,6 +58,7 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         bankNameLabel.inputAccessoryView = toolbar
         bankNameLabel.inputView = bankNamePicker
+        
         bankNamePicker.delegate = self
         bankNamePicker.dataSource = self
   
@@ -73,6 +74,12 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         percentLabel.inputAccessoryView = toolbar
 
         sumLabel.inputAccessoryView = toolbar
+        
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
     
     //  BankNamePicker and DurationPicker:Methods
@@ -97,6 +104,20 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         return ""
     }
     
+    // show andhide keyboard
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
     //MARK: Segment Countrols
     
     @IBAction func curencySegment(_ sender: Any) {
@@ -123,7 +144,7 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     static func pushSaveButton(_ sender: Any) {
- 
+
     }
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -157,14 +178,15 @@ extension NewDepositViewController: UITextFieldDelegate {
 
     //MARK: Alert Wrong Duration
     private func alertWrongData() {
-        let alert = UIAlertController(title: "Ошибка!", message: "Невозможно рассчитать. Пожалуйста, измените длительность вклада.",
+        let alert = UIAlertController(title: "Ошибка!",
+                                      message: "Невозможно рассчитать. Пожалуйста, измените длительность вклада.",
                                       preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default,handler: { _ in }))
         self.present(alert, animated: true, completion: nil)
     }
     
     //MARK: Save New Deposit
-    private func saveDeposit() {
+    func saveDeposit() {
         
         let newDeposit = Deposit( depositName: depositNameLabel.text!,
                                   bankName: bankNameLabel.text ?? "",

@@ -146,10 +146,8 @@ extension MainUIViewController: UITextFieldDelegate {
         
         endDates.sort()
         
-        return (NewDepositViewController.dateToString(dateString: endDates.last))
-        
+        return NewDepositViewController.dateToString(dateString: endDates.last)
     }
-  
 
     private func fetchData() {
 
@@ -171,7 +169,7 @@ extension MainUIViewController: UITextFieldDelegate {
                 }
         
         }.resume()
-        return ()
+        return
    
     }
     @IBAction func currencySlider(_ sender: Any) {
