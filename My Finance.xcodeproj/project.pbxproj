@@ -11,11 +11,11 @@
 		9E03D13923C20FC400B0A3C0 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03D13823C20FC400B0A3C0 /* Calculations.swift */; };
 		9E05535723C2FC9300891CAB /* MainUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E05535623C2FC9300891CAB /* MainUIViewController.swift */; };
 		9E1DD94E23A5FA5300E32782 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1DD94D23A5FA5300E32782 /* SceneDelegate.swift */; };
-		9E1DD95323A5FA5300E32782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E1DD95123A5FA5300E32782 /* Main.storyboard */; };
 		9E1DD95523A5FA5400E32782 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E1DD95423A5FA5400E32782 /* Assets.xcassets */; };
 		9E1DD95823A5FA5400E32782 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E1DD95623A5FA5400E32782 /* LaunchScreen.storyboard */; };
 		9E1DD96023A5FA8700E32782 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1DD95F23A5FA8600E32782 /* MainTableViewController.swift */; };
-		9E55140823AB27B800D5D9E7 /* NewDepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55140623AA333E00D5D9E7 /* NewDepositViewController.swift */; };
+		9E45A33C23C85E82002A1671 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E1DD95123A5FA5300E32782 /* Main.storyboard */; };
+		9E55140823AB27B800D5D9E7 /* NewDepositTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55140623AA333E00D5D9E7 /* NewDepositTableViewController.swift */; };
 		9E55140923AB27BC00D5D9E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1DD94B23A5FA5300E32782 /* AppDelegate.swift */; };
 		9E5A6A5C23A751B1000DC9D0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A6A5B23A751B1000DC9D0 /* CustomTableViewCell.swift */; };
 		9E5A6A5E23A77328000DC9D0 /* InvestmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A6A5D23A77328000DC9D0 /* InvestmentModel.swift */; };
@@ -39,7 +39,7 @@
 		9E1DD95723A5FA5400E32782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E1DD95923A5FA5400E32782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E1DD95F23A5FA8600E32782 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
-		9E55140623AA333E00D5D9E7 /* NewDepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDepositViewController.swift; sourceTree = "<group>"; };
+		9E55140623AA333E00D5D9E7 /* NewDepositTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDepositTableViewController.swift; sourceTree = "<group>"; };
 		9E5A6A5B23A751B1000DC9D0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		9E5A6A5D23A77328000DC9D0 /* InvestmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentModel.swift; sourceTree = "<group>"; };
 		9EC7DE3423C33FC300BB76F0 /* CurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 			children = (
 				9E05535623C2FC9300891CAB /* MainUIViewController.swift */,
 				9E1DD95F23A5FA8600E32782 /* MainTableViewController.swift */,
-				9E55140623AA333E00D5D9E7 /* NewDepositViewController.swift */,
+				9E55140623AA333E00D5D9E7 /* NewDepositTableViewController.swift */,
 				9E5A6A5B23A751B1000DC9D0 /* CustomTableViewCell.swift */,
 			);
 			path = ViewControllers;
@@ -207,9 +207,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E45A33C23C85E82002A1671 /* Main.storyboard in Resources */,
 				9E1DD95823A5FA5400E32782 /* LaunchScreen.storyboard in Resources */,
 				9E1DD95523A5FA5400E32782 /* Assets.xcassets in Resources */,
-				9E1DD95323A5FA5300E32782 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +264,7 @@
 			files = (
 				9E55140923AB27BC00D5D9E7 /* AppDelegate.swift in Sources */,
 				9E1DD96023A5FA8700E32782 /* MainTableViewController.swift in Sources */,
-				9E55140823AB27B800D5D9E7 /* NewDepositViewController.swift in Sources */,
+				9E55140823AB27B800D5D9E7 /* NewDepositTableViewController.swift in Sources */,
 				9E5A6A5E23A77328000DC9D0 /* InvestmentModel.swift in Sources */,
 				9EC7DE3B23C5DA7D00BB76F0 /* BanksList.swift in Sources */,
 				9E5A6A5C23A751B1000DC9D0 /* CustomTableViewCell.swift in Sources */,
