@@ -15,14 +15,17 @@ class MainUIViewController: UIViewController{
     @IBOutlet var totalSumLabel: UILabel!
     @IBOutlet var currencySegment: UISegmentedControl!
     
+    @IBOutlet var backgroundTotalSum: UILabel!
+    
     var usd = 0.0
     var eur = 0.0
     var clickButton = 0
     
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        setupNavigationController()
         
         totalSumDescription.isEnabled = true
         totalSumLabel.isEnabled = true
@@ -36,6 +39,13 @@ class MainUIViewController: UIViewController{
             self.totalSumLabel.text = "\(self.displaiedSum().1)"
         }
     
+    }
+    
+    func setupNavigationController() {
+//              navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+        UITabBar.appearance().barTintColor = UIColor.init(red: 74/256, green: 118/256, blue: 168/256, alpha: 1)
+//        UITabBar.appearance().backgroundImage = UIImage()
     }
 
    

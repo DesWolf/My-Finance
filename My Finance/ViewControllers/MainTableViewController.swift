@@ -18,8 +18,11 @@ class MainTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         deposites = realm.objects(Deposit.self)
+
+//        UITabBar.appearance().barTintColor = UIColor.init(red: 74/256, green: 118/256, blue: 168/256, alpha: 1)
+//        
     }
 
     // MARK: - Table view data source
@@ -32,6 +35,10 @@ class MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return deposites.isEmpty ? 0 : deposites.count
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,17 +62,21 @@ class MainTableViewController: UITableViewController {
             return currency
         }
         
+        let myColor = UIColor.init(red: 74/256, green: 118/256, blue: 168/256, alpha: 1)
+        
+        
         cell.name.text = deposit.depositName
         cell.aditionalInfo.text = "\(NewDepositViewController.dateToString(dateString: deposit.startDate)) - \(NewDepositViewController.dateToString(dateString: deposit.endDate))"
         cell.sum.text = "\(deposit.sum) \(currencySegment(currencySegment: deposit.currencySegment))"
+       
         cell.persent.text = "\(deposit.percent)% (\(deposit.finalSum))"
         cell.imageOfDeposit.layer.cornerRadius = cell.frame.size.height / 2.45
-        //cell.imageOfDeposit.layer.borderWidth = 1.5
-       // cell.imageOfDeposit.layer.borderColor = myColor.cgColor
+        cell.imageOfDeposit.layer.borderWidth = 1.5
+        cell.imageOfDeposit.layer.borderColor = myColor.cgColor
         cell.imageOfDeposit.clipsToBounds = true
         
         if deposit.bankName == "" {
-            cell.imageOfDeposit.image = #imageLiteral(resourceName: "Safe")
+            cell.imageOfDeposit.image = #imageLiteral(resourceName: "-=Нет в списке=-")
         } else {
             cell.imageOfDeposit.image = UIImage(named: deposit.bankName)
         }
@@ -123,7 +134,7 @@ class MainTableViewController: UITableViewController {
             
     private func sorting() {
                 
-        deposites = deposites.sorted(byKeyPath: "depositName", ascending: ascendingSorting)
+        deposites = deposites.sorted(byKeyPath: "endDate", ascending: ascendingSorting)
         tableView.reloadData()
     }
 

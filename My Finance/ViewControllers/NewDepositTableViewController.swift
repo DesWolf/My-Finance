@@ -19,13 +19,14 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet var sumLabel: UITextField!
     @IBOutlet var capitalisationSegment: UISegmentedControl!
     @IBOutlet var currencySegment: UISegmentedControl!
+    @IBOutlet var aditionalInfo: UITextView!
     
     var currentDeposit: Deposit?
     
     let bankNamePicker = UIPickerView()
     let datePicker = UIDatePicker()
     let durationPicker = UIPickerView()
-    let duration = ["30 days", "90 days", "180 days", "365 days", "730 days", "1095 days", "1825 days"]
+    let duration = ["30 дней", "90 дней", "180 дней", "365 дней", "730 дней", "1095 дней", "1825 дней"]
     let bankNames = Banklist.bankNames
   
     var changed = 0
@@ -34,6 +35,12 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let myColor = UIColor.init(red: 74/256, green: 118/256, blue: 168/256, alpha: 1)
+        
+        aditionalInfo.layer.borderWidth = 1.5
+        aditionalInfo.layer.borderColor = myColor.cgColor
+        
         
         saveButton.isEnabled = false
         
@@ -75,11 +82,11 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
         sumLabel.inputAccessoryView = toolbar
         
+        aditionalInfo.inputAccessoryView = toolbar
         
-//        if sumLabel.isEditing == true {
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-//        }
     }
     
     //  BankNamePicker and DurationPicker:Methods
@@ -104,18 +111,17 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         return ""
     }
     
-//     //show andhide keyboard
 //    @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0 {
-//                self.view.frame.origin.y -= keyboardSize.height
+//    if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//        if self.view.frame.origin.y == 0 {
+//            self.view.frame.origin.y -= keyboardSize.height
 //            }
 //        }
 //    }
 //
 //    @objc func keyboardWillHide(notification: NSNotification) {
-//        if self.view.frame.origin.y != 0 {
-//            self.view.frame.origin.y = 0
+//    if self.view.frame.origin.y != 0 {
+//        self.view.frame.origin.y = 0
 //        }
 //    }
     //MARK: Segment Countrols
