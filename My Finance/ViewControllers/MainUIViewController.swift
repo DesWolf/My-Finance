@@ -8,27 +8,24 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
-class MainUIViewController: UIViewController{
+class MainUIViewController: UIViewController {
 
     @IBOutlet var totalSumDescription: UILabel!
     @IBOutlet var totalSumLabel: UILabel!
     @IBOutlet var currencySegment: UISegmentedControl!
-    
     @IBOutlet var backgroundTotalSum: UILabel!
-    
-    var usd = 0.0
-    var eur = 0.0
+   
+    var usd = 62.0
+    var eur = 68.0
     var clickButton = 0
+    var notification = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         setupNavigationController()
-        
-        totalSumDescription.isEnabled = true
-        totalSumLabel.isEnabled = true
         
         fetchData()
         
@@ -37,29 +34,62 @@ class MainUIViewController: UIViewController{
         _ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { timer in
             self.totalSumDescription.text = "\(self.displaiedSum().0)"
             self.totalSumLabel.text = "\(self.displaiedSum().1)"
+            self.scheduleNotification(inSeconds: 5) {(success) in
+                if success {
+                    print("We send it")
+                } else {
+                    print("Faild")
+                }
+            }
         }
-    
-    }
-    
-    func setupNavigationController() {
-//              navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        navigationController?.navigationBar.shadowImage = UIImage()
-        UITabBar.appearance().barTintColor = UIColor.init(red: 74/256, green: 118/256, blue: 168/256, alpha: 1)
-//        UITabBar.appearance().backgroundImage = UIImage()
     }
 
-   
-    
+    func setupNavigationController() {
+        UITabBar.appearance().barTintColor = UIColor.init(red: 74/256, green: 118/256, blue: 168/256, alpha: 1)
+    }
+
     @IBAction func totalSumButton(_ sender: Any) {
 
         if clickButton == 0 {
             clickButton = 1
-           
         } else {
-            
             clickButton = 0
        }
     }
+    func scheduleNotification(inSeconds seconds: TimeInterval, comletion: (Bool) -> ()) {
+        
+        removeNotification(withIdentifiers: ["MyUniqueIdentifier"])
+        
+        let fistEndDate = NewDepositViewController.dateFromString(getDataOfFirstAndLastDeposit().firstDate)
+        var date = fistEndDate
+
+        let content = UNMutableNotificationContent()
+        content.title = "Мои Вклады"
+        content.body = "Ваш вклад заканчивается завтра!"
+        content.sound = UNNotificationSound.default
+        
+        let calendar = Calendar(identifier: .gregorian)
+        
+        date = calendar.date(byAdding: .hour, value: -7, to: date)!
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        
+        let triger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        let request = UNNotificationRequest(identifier: "MyUniqueIdentifier", content: content, trigger: triger)
+    
+        let center = UNUserNotificationCenter.current()
+        center.add(request, withCompletionHandler: nil)
+    }
+    
+    func removeNotification(withIdentifiers identifiers: [String]) {
+        
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: identifiers)
+    }
+    
+    deinit {
+        removeNotification(withIdentifiers: ["MyUniqueIdentifier"])
+    }
+    
 }
 extension MainUIViewController: UITextFieldDelegate {
         
@@ -72,25 +102,25 @@ extension MainUIViewController: UITextFieldDelegate {
             displaiedText = "Cумма вкладов на текущий момент:"
             switch currencySegment.selectedSegmentIndex {
             case 0:
-                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().0))) ₽"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().totalSumAtStart))) ₽"
             case 1:
-                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().0 / usd))) $"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().totalSumAtStart / usd))) $"
             case 2:
-                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().0 / eur))) €"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().totalSumAtStart / eur))) €"
             default:
                 break
             }
             
         } else {
-            displaiedText = "Cумма вкладов после \(getDataOfLastDeposit()):"
+            displaiedText = "Cумма вкладов после \(getDataOfFirstAndLastDeposit().lastDate):"
             
             switch currencySegment.selectedSegmentIndex {
             case 0:
-                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().1))) ₽"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().totalSumAtEnd))) ₽"
             case 1:
-                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().1 / usd))) $"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().totalSumAtEnd / usd))) $"
             case 2:
-                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().1 / eur))) €"
+                displaiedSum = "\(separatedNumber(Int(getSumFromRealm().totalSumAtEnd / eur))) €"
             default:
                 break
             }
@@ -108,7 +138,7 @@ extension MainUIViewController: UITextFieldDelegate {
         return formatter.string(from: itIsANumber)!
     }
         
-    private func getSumFromRealm () -> (Double, Double){
+    private func getSumFromRealm () -> (totalSumAtStart: Double, totalSumAtEnd: Double){
         
         let deposites = realm.objects(Deposit.self)
         var i = 0
@@ -141,27 +171,29 @@ extension MainUIViewController: UITextFieldDelegate {
         return(totalSumAtStart, totalSumAtEnd)
     }
     
-    private func getDataOfLastDeposit() -> String {
+    private func getDataOfFirstAndLastDeposit() -> (firstDate: String, lastDate: String) {
         
         let deposites = realm.objects(Deposit.self)
-        var i = 0
-        var endDates = [Date]()
         
+        var i = 0
+        var depositDates = [Date]()
+       
         while i < deposites.count {
               
         let deposit = deposites[i]
-            endDates.append(deposit.endDate)
+            depositDates.append(deposit.endDate)
             i += 1
         }
+        depositDates.sort()
         
-        endDates.sort()
-        
-        return NewDepositViewController.dateToString(dateString: endDates.last)
+        let firstDate = NewDepositViewController.dateToString(dateString: depositDates.first)
+        let lastDate = NewDepositViewController.dateToString(dateString: depositDates.last)
+        return (firstDate, lastDate)
     }
 
     private func fetchData() {
 
-    let jsonURLString =  "https://www.cbr-xml-daily.ru/daily_json.js"
+    let jsonURLString = "https://www.cbr-xml-daily.ru/daily_json.js"
     
     guard let url = URL(string: jsonURLString) else { return}
         
@@ -180,9 +212,6 @@ extension MainUIViewController: UITextFieldDelegate {
         
         }.resume()
         return
-   
-    }
-    @IBAction func currencySlider(_ sender: Any) {
     }
 }
 

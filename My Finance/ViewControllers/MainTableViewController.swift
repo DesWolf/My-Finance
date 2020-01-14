@@ -10,19 +10,18 @@ import UIKit
 import RealmSwift
 
 class MainTableViewController: UITableViewController {
-
+    
     @IBOutlet var sortButton: UIBarButtonItem!
     
+    var notification = 0
+    var period = ""
     var deposites: Results<Deposit>!
     var ascendingSorting = true
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         deposites = realm.objects(Deposit.self)
-
-//        UITabBar.appearance().barTintColor = UIColor.init(red: 74/256, green: 118/256, blue: 168/256, alpha: 1)
-//        
     }
 
     // MARK: - Table view data source
@@ -70,16 +69,13 @@ class MainTableViewController: UITableViewController {
         cell.sum.text = "\(deposit.sum) \(currencySegment(currencySegment: deposit.currencySegment))"
        
         cell.persent.text = "\(deposit.percent)% (\(deposit.finalSum))"
-        cell.imageOfDeposit.layer.cornerRadius = cell.frame.size.height / 2.45
-        cell.imageOfDeposit.layer.borderWidth = 1.5
-        cell.imageOfDeposit.layer.borderColor = myColor.cgColor
+        cell.imageOfDeposit.layer.cornerRadius = 27
         cell.imageOfDeposit.clipsToBounds = true
-        
-        if deposit.bankName == "" {
-            cell.imageOfDeposit.image = #imageLiteral(resourceName: "-=Нет в списке=-")
-        } else {
-            cell.imageOfDeposit.image = UIImage(named: deposit.bankName)
-        }
+        cell.imageOfFrame.layer.borderWidth = 2
+        cell.imageOfFrame.layer.borderColor = myColor.cgColor
+        cell.imageOfFrame.layer.cornerRadius =  30
+        cell.imageOfFrame.clipsToBounds = true
+        cell.imageOfDeposit.image = UIImage(named: deposit.bankName) ?? #imageLiteral(resourceName: "-=Нет в списке=-")
 
         return cell
 }
@@ -117,6 +113,7 @@ class MainTableViewController: UITableViewController {
           
             newDepositVC.currentDeposit = deposit
         }
+
     }
     
     @IBAction func sortButtonPush(_ sender: Any) {

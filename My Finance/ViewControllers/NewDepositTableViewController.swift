@@ -20,13 +20,15 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet var capitalisationSegment: UISegmentedControl!
     @IBOutlet var currencySegment: UISegmentedControl!
     @IBOutlet var aditionalInfo: UITextView!
+    @IBOutlet var botomConstraint: NSLayoutConstraint!
+    @IBOutlet var aditionalCommentStackView: UIStackView!
     
     var currentDeposit: Deposit?
     
     let bankNamePicker = UIPickerView()
     let datePicker = UIDatePicker()
     let durationPicker = UIPickerView()
-    let duration = ["30 дней", "90 дней", "180 дней", "365 дней", "730 дней", "1095 дней", "1825 дней"]
+    let duration = ["1 день","30 дней", "90 дней", "180 дней", "365 дней", "730 дней", "1095 дней", "1825 дней"]
     let bankNames = Banklist.bankNames
   
     var changed = 0
@@ -65,7 +67,6 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         bankNameLabel.inputAccessoryView = toolbar
         bankNameLabel.inputView = bankNamePicker
-        
         bankNamePicker.delegate = self
         bankNamePicker.dataSource = self
   
@@ -85,8 +86,17 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         aditionalInfo.inputAccessoryView = toolbar
         
 
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        // Отслеживаем появление клавиатуры
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateTextView(notification:)),
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
+                                               object: nil)
+           
+        // Отслеживаем скрытие клавиатуры
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateTextView(notification:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
     
     //  BankNamePicker and DurationPicker:Methods
@@ -111,19 +121,26 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         return ""
     }
     
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//    if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//        if self.view.frame.origin.y == 0 {
-//            self.view.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-//    }
-//
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//    if self.view.frame.origin.y != 0 {
-//        self.view.frame.origin.y = 0
-//        }
-//    }
+@objc func updateTextView(notification: Notification) {
+       
+       guard let userInfo = notification.userInfo as? [String: AnyObject],
+           let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+           else { return }
+       
+       if notification.name == UIResponder.keyboardWillHideNotification {
+           aditionalInfo.contentInset = UIEdgeInsets.zero
+       } else {
+           aditionalInfo.contentInset = UIEdgeInsets(top: 0,
+                                                left: 0,
+                                                bottom: keyboardFrame.height - botomConstraint.constant,
+                                                right: 0)
+      
+           aditionalInfo.scrollIndicatorInsets = aditionalInfo.contentInset
+       }
+       
+       aditionalInfo.scrollRangeToVisible(aditionalInfo.selectedRange)
+   }
+    
     //MARK: Segment Countrols
     
     @IBAction func curencySegment(_ sender: Any) {
@@ -200,14 +217,14 @@ extension NewDepositViewController: UITextFieldDelegate {
                                   endDate: endDate(),
                                   duration: durationLabel.text!,
                                   percent: persentFloatCheck(numberFromText: percentLabel.text!),
-
                                   sum: Double(sumLabel.text!) ?? 0.0,
                                   finalSum: finalSumCalculation(duration: durationCalculation(duration: durationLabel.text!),
                                                                    percent: persentFloatCheck(numberFromText: percentLabel.text!),
                                                                    sum: Double(sumLabel.text!)!,
                                                                    capitalization: capitalisationSegment.selectedSegmentIndex),
                                   capitalisationSegment: capitalisationSegment.selectedSegmentIndex,
-                                  currencySegment: currencySegment.selectedSegmentIndex
+                                  currencySegment: currencySegment.selectedSegmentIndex,
+                                  aditionalInfo: aditionalInfo.text ?? ""
                                 )
         if currentDeposit != nil {
         
@@ -222,28 +239,13 @@ extension NewDepositViewController: UITextFieldDelegate {
                 currentDeposit?.finalSum = newDeposit.finalSum
                 currentDeposit?.capitalisationSegment = newDeposit.capitalisationSegment
                 currentDeposit?.currencySegment = newDeposit.currencySegment
+                currentDeposit?.aditionalInfo = newDeposit.aditionalInfo
             }
         } else {
                 StorageManager.saveObject(newDeposit)
         }
     }
 
-    private func persentFloatCheck (numberFromText: String) -> Double {
-        
-        var result = 0.0
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        
-        if let number = formatter.number(from: numberFromText) {
-            result = number.doubleValue
-        }
-        else{
-            result = Double(numberFromText) ?? 0.0
-        }
-        
-        return Double(result)
-    }
-    
     private func setupEditScreen() {
            
         if currentDeposit != nil {
@@ -258,6 +260,7 @@ extension NewDepositViewController: UITextFieldDelegate {
             sumLabel.text = "\(currentDeposit?.sum ?? 0)"
             capitalisationSegment.selectedSegmentIndex = currentDeposit?.capitalisationSegment ?? 0
             currencySegment.selectedSegmentIndex = currentDeposit?.currencySegment ?? 0
+            aditionalInfo.text = currentDeposit?.aditionalInfo
            }
        }
     
@@ -298,7 +301,7 @@ extension NewDepositViewController: UITextFieldDelegate {
         case 1:
            if duration < 1.0 {
                 finalSum = finalSum + (finalSum * percent  *  30.41 / 365) / 100
-                print(finalSum)
+                
             } else if duration > 1.0 {
                 while  i < duration  {
                     let percentSum = (finalSum * percent  *  30.41 / 365) / 100
@@ -326,7 +329,7 @@ extension NewDepositViewController: UITextFieldDelegate {
             return newDate
         }
         else {
-            return dateFormatter.date(from: "")!
+            return dateFormatter.date(from: "01.01.2200")!
         }
     }
     
@@ -344,4 +347,20 @@ extension NewDepositViewController: UITextFieldDelegate {
          
         return dateResult
      }
+    
+    private func persentFloatCheck (numberFromText: String) -> Double {
+       
+       var result = 0.0
+       let formatter = NumberFormatter()
+       formatter.locale = Locale.current
+       
+       if let number = formatter.number(from: numberFromText) {
+           result = number.doubleValue
+       }
+       else{
+           result = Double(numberFromText) ?? 0.0
+       }
+       
+       return Double(result)
+   }
 }

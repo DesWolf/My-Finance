@@ -11,6 +11,7 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
 
     @IBOutlet var imageOfDeposit: UIImageView!
+    @IBOutlet var imageOfFrame: UIImageView!
     @IBOutlet var name: UILabel!
     @IBOutlet var aditionalInfo: UILabel!
     @IBOutlet var sum: UILabel!

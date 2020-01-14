@@ -19,6 +19,7 @@
 		9E55140923AB27BC00D5D9E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1DD94B23A5FA5300E32782 /* AppDelegate.swift */; };
 		9E5A6A5C23A751B1000DC9D0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A6A5B23A751B1000DC9D0 /* CustomTableViewCell.swift */; };
 		9E5A6A5E23A77328000DC9D0 /* InvestmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A6A5D23A77328000DC9D0 /* InvestmentModel.swift */; };
+		9E99E4F523CDBB8E0034882A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E99E4F423CDBB8E0034882A /* StartViewController.swift */; };
 		9EC7DE3523C33FC300BB76F0 /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7DE3423C33FC300BB76F0 /* CurrencyData.swift */; };
 		9EC7DE3B23C5DA7D00BB76F0 /* BanksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7DE3A23C5DA7D00BB76F0 /* BanksList.swift */; };
 		AE62613ABAD374957EE05300 /* Pods_My_Finance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F66AB5FA1E1E5DE6F2DEF90 /* Pods_My_Finance.framework */; };
@@ -42,6 +43,7 @@
 		9E55140623AA333E00D5D9E7 /* NewDepositTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDepositTableViewController.swift; sourceTree = "<group>"; };
 		9E5A6A5B23A751B1000DC9D0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		9E5A6A5D23A77328000DC9D0 /* InvestmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentModel.swift; sourceTree = "<group>"; };
+		9E99E4F423CDBB8E0034882A /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		9EC7DE3423C33FC300BB76F0 /* CurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
 		9EC7DE3A23C5DA7D00BB76F0 /* BanksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanksList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +71,7 @@
 		9E03D13423C1EB2800B0A3C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9E99E4F423CDBB8E0034882A /* StartViewController.swift */,
 				9E05535623C2FC9300891CAB /* MainUIViewController.swift */,
 				9E1DD95F23A5FA8600E32782 /* MainTableViewController.swift */,
 				9E55140623AA333E00D5D9E7 /* NewDepositTableViewController.swift */,
@@ -102,8 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				9E1DD94B23A5FA5300E32782 /* AppDelegate.swift */,
-				9E1DD95423A5FA5400E32782 /* Assets.xcassets */,
 				9E1DD94D23A5FA5300E32782 /* SceneDelegate.swift */,
+				9E1DD95423A5FA5400E32782 /* Assets.xcassets */,
 				9E1DD95923A5FA5400E32782 /* Info.plist */,
 			);
 			path = Other;
@@ -267,6 +270,7 @@
 				9E55140823AB27B800D5D9E7 /* NewDepositTableViewController.swift in Sources */,
 				9E5A6A5E23A77328000DC9D0 /* InvestmentModel.swift in Sources */,
 				9EC7DE3B23C5DA7D00BB76F0 /* BanksList.swift in Sources */,
+				9E99E4F523CDBB8E0034882A /* StartViewController.swift in Sources */,
 				9E5A6A5C23A751B1000DC9D0 /* CustomTableViewCell.swift in Sources */,
 				9E1DD94E23A5FA5300E32782 /* SceneDelegate.swift in Sources */,
 				9E05535723C2FC9300891CAB /* MainUIViewController.swift in Sources */,
@@ -348,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -402,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
