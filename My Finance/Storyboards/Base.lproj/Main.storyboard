@@ -99,7 +99,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="365 дней" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GY9-jq-uhG">
                                                         <rect key="frame" x="145" y="0.0" width="145" height="34"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>

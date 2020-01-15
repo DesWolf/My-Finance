@@ -28,9 +28,8 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     let bankNamePicker = UIPickerView()
     let datePicker = UIDatePicker()
     let durationPicker = UIPickerView()
-    let duration = ["30 дней", "90 дней", "180 дней", "365 дней", "730 дней", "1095 дней", "1825 дней"]
+    let duration = 0
     let bankNames = Banklist.bankNames
-  
     var changed = 0
     var tableViewUpdated = 0
    
@@ -63,27 +62,19 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         toolbar.setItems([flexSpace, doneButton], animated: true)
         
         depositNameLabel.inputAccessoryView = toolbar
-        
         bankNameLabel.inputAccessoryView = toolbar
+        startDateLabel.inputAccessoryView = toolbar
+        durationLabel.inputAccessoryView = toolbar
+        percentLabel.inputAccessoryView = toolbar
+        sumLabel.inputAccessoryView = toolbar
+        aditionalInfo.inputAccessoryView = toolbar
+        
         bankNameLabel.inputView = bankNamePicker
         bankNamePicker.delegate = self
         bankNamePicker.dataSource = self
-  
+        
         startDateLabel.inputView = datePicker
         datePicker.datePickerMode = .date
-        startDateLabel.inputAccessoryView = toolbar
-              
-        durationLabel.inputAccessoryView = toolbar
-        durationLabel.inputView = durationPicker
-        durationPicker.delegate = self
-        durationPicker.dataSource = self
-        
-        percentLabel.inputAccessoryView = toolbar
-
-        sumLabel.inputAccessoryView = toolbar
-        
-        aditionalInfo.inputAccessoryView = toolbar
-        
 
     // Отслеживаем появление клавиатуры
         NotificationCenter.default.addObserver(self,
@@ -104,20 +95,18 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if bankNameLabel.isEditing { return bankNames.count }
-        else if durationLabel.isEditing { return duration.count }
-        return 1
+      
+        return bankNames.count
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if bankNameLabel.isEditing { bankNameLabel.text = bankNames[row] }
-        else if durationLabel.isEditing { durationLabel.text = duration[row] }
-       }
+      bankNameLabel.text = bankNames[row]
+    
+    }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if bankNameLabel.isEditing { return bankNames[row] }
-        else if durationLabel.isEditing { return duration[row] }
-        return ""
+      
+        return bankNames[row]
     }
     
 @objc func updateTextView(notification: Notification) {
@@ -277,7 +266,11 @@ extension NewDepositViewController: UITextFieldDelegate {
     
     private func durationCalculation(duration: String) -> Double {
         
-        return Double(duration.components(separatedBy: " ").first!) ?? 0.0
+        if duration == "" {
+            alertWrongData()
+            }
+        
+        return Double(duration.components(separatedBy: "").first!) ?? 0.0
     }
     
 }
