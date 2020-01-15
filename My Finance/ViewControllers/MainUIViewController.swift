@@ -60,7 +60,7 @@ class MainUIViewController: UIViewController {
         
         removeNotification(withIdentifiers: ["MyUniqueIdentifier"])
         
-        let fistEndDate = NewDepositViewController.dateFromString(getDataOfFirstAndLastDeposit().firstDate)
+        let fistEndDate = Calculations.dateFromString(getDataOfFirstAndLastDeposit().firstDate)
         var date = fistEndDate
 
         let content = UNMutableNotificationContent()
@@ -186,8 +186,8 @@ extension MainUIViewController: UITextFieldDelegate {
         }
         depositDates.sort()
         
-        let firstDate = NewDepositViewController.dateToString(dateString: depositDates.first)
-        let lastDate = NewDepositViewController.dateToString(dateString: depositDates.last)
+        let firstDate = Calculations.dateToString(dateString: depositDates.first)
+        let lastDate = Calculations.dateToString(dateString: depositDates.last)
         return (firstDate, lastDate)
     }
 

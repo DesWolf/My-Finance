@@ -28,7 +28,7 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     let bankNamePicker = UIPickerView()
     let datePicker = UIDatePicker()
     let durationPicker = UIPickerView()
-    let duration = ["1 день","30 дней", "90 дней", "180 дней", "365 дней", "730 дней", "1095 дней", "1825 дней"]
+    let duration = ["30 дней", "90 дней", "180 дней", "365 дней", "730 дней", "1095 дней", "1825 дней"]
     let bankNames = Banklist.bankNames
   
     var changed = 0
@@ -42,7 +42,6 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         aditionalInfo.layer.borderWidth = 1.5
         aditionalInfo.layer.borderColor = myColor.cgColor
-        
         
         saveButton.isEnabled = false
         
@@ -86,20 +85,20 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         aditionalInfo.inputAccessoryView = toolbar
         
 
-        // Отслеживаем появление клавиатуры
+    // Отслеживаем появление клавиатуры
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateTextView(notification:)),
                                                name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
            
-        // Отслеживаем скрытие клавиатуры
+    // Отслеживаем скрытие клавиатуры
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateTextView(notification:)),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
     }
     
-    //  BankNamePicker and DurationPicker:Methods
+    //  BankNamePicker and DurationPicker: Methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -166,10 +165,6 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
     }
     
-    static func pushSaveButton(_ sender: Any) {
-
-    }
-    
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -211,20 +206,22 @@ extension NewDepositViewController: UITextFieldDelegate {
     //MARK: Save New Deposit
     func saveDeposit() {
         
-        let newDeposit = Deposit( depositName: depositNameLabel.text!,
-                                  bankName: bankNameLabel.text ?? "",
-                                  startDate: NewDepositViewController.dateFromString(startDateLabel.text!),
-                                  endDate: endDate(),
-                                  duration: durationLabel.text!,
-                                  percent: persentFloatCheck(numberFromText: percentLabel.text!),
-                                  sum: Double(sumLabel.text!) ?? 0.0,
-                                  finalSum: finalSumCalculation(duration: durationCalculation(duration: durationLabel.text!),
-                                                                   percent: persentFloatCheck(numberFromText: percentLabel.text!),
-                                                                   sum: Double(sumLabel.text!)!,
-                                                                   capitalization: capitalisationSegment.selectedSegmentIndex),
-                                  capitalisationSegment: capitalisationSegment.selectedSegmentIndex,
-                                  currencySegment: currencySegment.selectedSegmentIndex,
-                                  aditionalInfo: aditionalInfo.text ?? ""
+        let newDeposit = Deposit(depositName: depositNameLabel.text!,
+                                 bankName: bankNameLabel.text ?? "",
+                                 startDate: Calculations.dateFromString(startDateLabel.text!),
+                                 endDate: endDate(),
+                                 duration: durationLabel.text!,
+                                 percent: Calculations.persentFloatCheck(numberFromText: percentLabel.text!),
+                                 sum: Double(sumLabel.text!) ?? 0.0,
+                                 finalSum: Calculations.finalSumCalculation(
+                                                            duration: durationCalculation(duration: durationLabel.text!),
+                                                            percent: Calculations.persentFloatCheck(numberFromText: percentLabel.text!),
+                                                            sum: Double(sumLabel.text!)!,
+                                                            capitalization: capitalisationSegment.selectedSegmentIndex),
+                                
+                                 capitalisationSegment: capitalisationSegment.selectedSegmentIndex,
+                                 currencySegment: currencySegment.selectedSegmentIndex,
+                                 aditionalInfo: aditionalInfo.text ?? ""
                                 )
         if currentDeposit != nil {
         
@@ -254,7 +251,7 @@ extension NewDepositViewController: UITextFieldDelegate {
                
             depositNameLabel.text = currentDeposit?.depositName
             bankNameLabel.text = currentDeposit?.bankName
-            startDateLabel.text = NewDepositViewController.dateToString(dateString: currentDeposit?.startDate)
+            startDateLabel.text = Calculations.dateToString(dateString: currentDeposit?.startDate)
             durationLabel.text = currentDeposit?.duration
             percentLabel.text =  "\(currentDeposit?.percent ?? 0)"
             sumLabel.text = "\(currentDeposit?.sum ?? 0)"
@@ -271,7 +268,7 @@ extension NewDepositViewController: UITextFieldDelegate {
     }
 
     private func endDate () -> Date {
-        let dateFromString = NewDepositViewController.dateFromString(startDateLabel.text!)
+        let dateFromString = Calculations.dateFromString(startDateLabel.text!)
         let durationTime = (durationCalculation(duration: durationLabel.text!))
         let endDate = dateFromString.addingTimeInterval((durationTime) * 24 * 60 * 60)
         
@@ -283,84 +280,4 @@ extension NewDepositViewController: UITextFieldDelegate {
         return Double(duration.components(separatedBy: " ").first!) ?? 0.0
     }
     
-    // MARK: Final Sum Calculation
-    private func finalSumCalculation(duration: Double, percent: Double, sum: Double, capitalization: Int ) -> Double {
-        
-        var finalSum = sum
-        var i = 0.0
-        let duration = Double(Int(Double(durationCalculation(duration: durationLabel.text!)) / 30.41))
-        
-        switch capitalization {
-        case 0:
-            if duration  < 1.0 {
-                finalSum = finalSum + (finalSum * (percent / 12 / 100))
-            } else if duration > 1.0 {
-                let percentSum = (finalSum * (percent / 100)  *  duration / 12)
-                finalSum = finalSum + percentSum
-            }
-        case 1:
-           if duration < 1.0 {
-                finalSum = finalSum + (finalSum * percent  *  30.41 / 365) / 100
-                
-            } else if duration > 1.0 {
-                while  i < duration  {
-                    let percentSum = (finalSum * percent  *  30.41 / 365) / 100
-                    finalSum = finalSum + percentSum
-                    i += 1
-                }
-            }
-        case 2:
-            while  i < duration / 12.0 {
-                let percentSum = (finalSum * percent ) / 100
-                finalSum = finalSum + percentSum
-                i += 1
-            }
-        default:
-            break
-        }
-        return Double((String(format: "%.2f", finalSum)))  ?? 0.0
-    }
-
-    static func dateFromString(_ value: String) -> Date {
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        if let newDate = dateFormatter.date(from: value) {
-            return newDate
-        }
-        else {
-            return dateFormatter.date(from: "01.01.2200")!
-        }
-    }
-    
-    static func dateToString(dateString: Date?) -> String {
-         
-        var dateResult = ""
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-         
-        if  dateString == nil {
-            dateResult = ""
-        } else {
-            dateResult = formatter.string(from: dateString!)
-        }
-         
-        return dateResult
-     }
-    
-    private func persentFloatCheck (numberFromText: String) -> Double {
-       
-       var result = 0.0
-       let formatter = NumberFormatter()
-       formatter.locale = Locale.current
-       
-       if let number = formatter.number(from: numberFromText) {
-           result = number.doubleValue
-       }
-       else{
-           result = Double(numberFromText) ?? 0.0
-       }
-       
-       return Double(result)
-   }
 }

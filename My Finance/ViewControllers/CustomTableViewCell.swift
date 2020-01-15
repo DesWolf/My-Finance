@@ -17,8 +17,5 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet var sum: UILabel!
     @IBOutlet var persent: UILabel!
     
-    
-   
-    
 }
 

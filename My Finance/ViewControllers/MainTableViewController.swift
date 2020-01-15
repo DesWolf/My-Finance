@@ -65,7 +65,7 @@ class MainTableViewController: UITableViewController {
         
         
         cell.name.text = deposit.depositName
-        cell.aditionalInfo.text = "\(NewDepositViewController.dateToString(dateString: deposit.startDate)) - \(NewDepositViewController.dateToString(dateString: deposit.endDate))"
+        cell.aditionalInfo.text = "\(Calculations.dateToString(dateString: deposit.startDate)) - \(Calculations.dateToString(dateString: deposit.endDate))"
         cell.sum.text = "\(deposit.sum) \(currencySegment(currencySegment: deposit.currencySegment))"
        
         cell.persent.text = "\(deposit.percent)% (\(deposit.finalSum))"
