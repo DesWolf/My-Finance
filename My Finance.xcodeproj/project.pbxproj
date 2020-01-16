@@ -34,7 +34,7 @@
 		9E05535623C2FC9300891CAB /* MainUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUIViewController.swift; sourceTree = "<group>"; };
 		9E0ECD3623CF204100AA6F95 /* ContentPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPageViewController.swift; sourceTree = "<group>"; };
 		9E0ECD3823CF207900AA6F95 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		9E1DD94823A5FA5300E32782 /* My Finance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Finance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E1DD94823A5FA5300E32782 /* Мои Вклады.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Мои Вклады.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E1DD94B23A5FA5300E32782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E1DD95223A5FA5300E32782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9E1DD95423A5FA5400E32782 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 		9E1DD94923A5FA5300E32782 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9E1DD94823A5FA5300E32782 /* My Finance.app */,
+				9E1DD94823A5FA5300E32782 /* Мои Вклады.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,7 +177,7 @@
 			);
 			name = "My Finance";
 			productName = "My Finance";
-			productReference = 9E1DD94823A5FA5300E32782 /* My Finance.app */;
+			productReference = 9E1DD94823A5FA5300E32782 /* Мои Вклады.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -432,13 +432,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WJR74JV9LN;
 				INFOPLIST_FILE = "$(SRCROOT)/My Finance/Other/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.My-Finance-My-Deposits";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Мои Вклады";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -452,13 +453,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WJR74JV9LN;
 				INFOPLIST_FILE = "$(SRCROOT)/My Finance/Other/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.My-Finance-My-Deposits";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Мои Вклады";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

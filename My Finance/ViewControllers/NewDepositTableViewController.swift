@@ -49,6 +49,12 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
          
             textField!.addTarget(self, action: #selector(NewDepositViewController.textFieldDidChange(textField:)), for: UIControl.Event.editingDidEnd)
         }
+        
+        depositNameLabel.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        startDateLabel.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        durationLabel.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        percentLabel.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        sumLabel.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
 
         setupEditScreen()
     
@@ -162,12 +168,28 @@ class NewDepositViewController: UIViewController, UIPickerViewDelegate, UIPicker
     // MARK: Text field delegate
 extension NewDepositViewController: UITextFieldDelegate {
     
-    @objc func textFieldDidChange(textField: UITextField){
-        
-        changed += 1
-        if changed == 5 {
-            saveButton.isEnabled = true
+    @objc func editingChanged(_ textField: UITextField) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
         }
+        guard
+            let depositName = depositNameLabel.text, !depositName.isEmpty,
+            let startDate = startDateLabel.text, !startDate.isEmpty,
+            let duration = durationLabel.text, !duration.isEmpty,
+            let percent = percentLabel.text, !percent.isEmpty,
+            let sum = sumLabel.text, !sum.isEmpty
+        else {
+            saveButton.isEnabled = false
+            return
+        }
+        saveButton.isEnabled = true
+    }
+    
+    @objc func textFieldDidChange(textField: UITextField){
+       
       }
     
     @objc func doneAction(){
@@ -175,6 +197,7 @@ extension NewDepositViewController: UITextFieldDelegate {
              getDateFromPicker()
         }
         view.endEditing(true)
+
     }
     
     private func getDateFromPicker(){
