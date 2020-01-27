@@ -189,7 +189,7 @@ extension NewDepositViewController: UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(textField: UITextField){
-       
+
       }
     
     @objc func doneAction(){
@@ -292,7 +292,6 @@ extension NewDepositViewController: UITextFieldDelegate {
         if duration == "" {
             alertWrongData()
             }
-        
         return Double(duration.components(separatedBy: "").first!) ?? 0.0
     }
     
