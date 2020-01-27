@@ -11,16 +11,16 @@ import RealmSwift
 let realm = try! Realm()
 
 class StorageManager {
-    
-    static func saveObject(_ deposit: Deposit){
-        
+
+    static func saveObject(_ deposit: Deposit) {
+
         try! realm.write {
             realm.add(deposit)
         }
     }
-    
+
     static func deleteObject(_ deposit: Deposit) {
-        
+
         try! realm.write {
             realm.delete(deposit)
         }
