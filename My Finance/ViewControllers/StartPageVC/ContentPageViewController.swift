@@ -15,22 +15,21 @@ class ContentPageViewController: UIViewController {
 
     @IBOutlet var startButton: UIButton!
 
-        var presentImage = UIImage(named: "startScreen1")
+    var presentImage = UIImage(named: "startScreen1")
 
-        var currentPage = 0
-        var numberOfPages = 0
+    var currentPage = 0
+    var numberOfPages = 0
 
-        override func viewDidLoad() {
-            super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-            startButton.isHidden = true
-            tutorialImage.image = presentImage
-            pageControl.numberOfPages = numberOfPages
-            pageControl.currentPage = currentPage
+        startButton.isHidden = true
+        tutorialImage.image = presentImage
+        pageControl.numberOfPages = numberOfPages
+        pageControl.currentPage = currentPage
 
-            if pageControl.currentPage == 6 {
-                 startButton.isHidden = false
-            }
+        if pageControl.currentPage == 6 {
+            startButton.isHidden = false
         }
-
     }
+}

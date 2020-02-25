@@ -37,6 +37,5 @@ class Deposit: Object {
         self.capitalisationSegment = capitalisationSegment
         self.currencySegment = currencySegment
         self.aditionalInfo = aditionalInfo
-
     }
 }

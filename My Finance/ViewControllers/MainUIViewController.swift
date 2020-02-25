@@ -54,7 +54,7 @@ class MainUIViewController: UIViewController {
             clickButton = 1
         } else {
             clickButton = 0
-       }
+        }
     }
     func scheduleNotification(inSeconds seconds: TimeInterval, comletion: (Bool) -> Void) {
 
@@ -193,11 +193,11 @@ extension MainUIViewController: UITextFieldDelegate {
 
     private func fetchData() {
 
-    let jsonURLString = "https://www.cbr-xml-daily.ru/daily_json.js"
+        let jsonURLString = "https://www.cbr-xml-daily.ru/daily_json.js"
 
-    guard let url = URL(string: jsonURLString) else { return}
+        guard let url = URL(string: jsonURLString) else { return}
 
-    URLSession.shared.dataTask(with: url) { (data, _, error) in
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
 
             guard let data = data else { return }
 
@@ -205,11 +205,9 @@ extension MainUIViewController: UITextFieldDelegate {
                 let currencydata = try JSONDecoder().decode(CurrencyData.self, from: data)
                 self.usd = Double(currencydata.Valute.USD.Value)
                 self.eur = Double(currencydata.Valute.EUR.Value)
-
             } catch let error {
                 print("Error serrialization Jason", error)
-                }
-
+            }
         }.resume()
         return
     }

@@ -12,8 +12,8 @@
 import Foundation
 
 struct CurrencyData: Decodable {
-
-   
+    
+    
     let Date: String
     let PreviousDate: String
     let PreviousURL: String
@@ -22,13 +22,13 @@ struct CurrencyData: Decodable {
 }
 
 struct Valute: Decodable {
-
+    
     let USD: Currency
     let EUR: Currency
 }
 
 struct Currency: Decodable {
-
+    
     let ID: String
     let NumCode: String
     let CharCode: String
@@ -36,6 +36,6 @@ struct Currency: Decodable {
     let Name: String
     let Value: Double
     let Previous: Double
-
+    
 }
 // swiftlint:enable all
