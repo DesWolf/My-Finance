@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "82EA2F3A-F183-43CB-B2A9-3B96DC659B44"
+   uuid = "E0F1484D-EDB3-4B65-AA69-28347658717F"
    type = "0"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FB000410-4BCA-451C-A1EF-9DEC0CB96906"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../../../../var/folders/yv/21mckcnn291b4y112q3116zm0000gn/T/14AFA540-852E-4325-8FD3-B7D1B6E1F612/InvestmentModel.swift/My Finance/InvestmentModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "saveDeposit()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>
